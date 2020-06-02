@@ -10,6 +10,8 @@ client.on('ready', () => {
 });
 
 client.on('message', message => {
+	const guild = client.guilds.get('id');
+	const member = message.member || guild.members.get(message.author.id);
 	const parts = message.content.split(' ');
 	console.log(message);
 
