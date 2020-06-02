@@ -15,7 +15,7 @@ client.on('message', message => {
 	if (parts[0] == '!role') {
 		if (parts[1] == 'test1') {
 			console.log("Someone asked for test1 role");
-			message.member.roles.add(TEST1);
+			message.member.addRole(TEST1);
 			message.reply('Ok, thats done.');
 		}
 	}
