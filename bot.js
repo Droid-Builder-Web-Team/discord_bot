@@ -11,6 +11,7 @@ client.on('ready', () => {
 
 client.on('message', message => {
 	const parts = message.content.split(' ');
+	console.log(message);
 
 	if (parts[0] == '!role') {
 		if (parts[1] == 'test1') {
