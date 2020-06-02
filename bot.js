@@ -4,14 +4,11 @@ const client = new Discord.Client();
 const TEST1 = '717407189190443009';
 
 client.on('ready', () => {
-
 	    console.log('I am ready!');
-
 });
 
 client.on('message', message => {
-	const guild = client.guilds.get('id');
-	const member = message.member || guild.members.get(message.author.id);
+	console.log("Seen a message....");
 	const parts = message.content.split(' ');
 	console.log(message);
 
@@ -19,6 +16,7 @@ client.on('message', message => {
 		if (parts[1] == 'test1') {
 			console.log("Someone asked for test1 role");
 			message.member.roles.add(TEST1);
+			message.reply('Ok, thats done.');
 		}
 	}
 	
