@@ -10,14 +10,19 @@ client.on('ready', () => {
 client.on('message', message => {
 	console.log("Seen a message....");
 	const parts = message.content.split(' ');
-	console.log(message);
 
-	if (parts[0] == '!role') {
+	if (parts[0] == '!role' && message.member != null) {
 		if (parts[1] == 'test1') {
 			console.log("Someone asked for test1 role");
 			message.member.addRole(TEST1);
 			message.reply('Ok, thats done.');
 		}
+		if (parts[1] == 'test2') {
+		        console.log("Someone asked for test2 role");
+		        message.member.addRole(TEST2);
+		        message.reply('Ok, thats done.');
+		}
+
 	}
 	
 	if (message.content === 'ping') {
