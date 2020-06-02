@@ -1,8 +1,7 @@
 const Discord = require('discord.js');
-
 const client = new Discord.Client();
 
- 
+const TEST1 = '717407189190443009';
 
 client.on('ready', () => {
 
@@ -10,19 +9,19 @@ client.on('ready', () => {
 
 });
 
- 
-
 client.on('message', message => {
+	const parts = message.content.split(' ');
 
-	    if (message.content === 'ping') {
-
-		           message.reply('pong');
-
-		           }
-
+	if (parts[0] == '!role') {
+		if (parts[1] == 'test1') {
+			message.member.addRole(TEST1);
+		}
+	}
+	
+	if (message.content === 'ping') {
+		message.reply('pong');
+	}
 });
-
- 
 
 // THIS  MUST  BE  THIS  WAY
 
