@@ -1,9 +1,14 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
-const TEST1 = '717407189190443009';
-const TEST2 = '717407216860266626';
-const TEST3 = '717407237454430238';
+const RSERIES = '717758445956104212';
+const TSERIES = '717758451916210187';
+const BBSERIES = '717758449206820895';
+const CSERIES = '717758459080343565';
+const MSE = '717758456576081970';
+const GONK = '717758461651320864';
+const KSERIES = '717758453912830023';
+const PROTOCOL = '717758463400345681';
 
 client.on('ready', () => {
 	    console.log('I am ready!');
@@ -15,14 +20,29 @@ client.on('message', message => {
 
 	if (parts[0] == '!role' && message.member != null) {
 		switch(parts[1]) {
-			case 'test1':
-				message.member.addRole(TEST1);
+			case 'r-series':
+				message.member.addRole(RSERIES);
 				break;
-			case 'test2':
-				message.member.addRole(TEST2);
+			case 't-series':
+				message.member.addRole(TSERIES);
 				break;
-			case 'test3':
-				message.member.addRole(TEST3);
+			case 'bb-series':
+				message.member.addRole(BBSERIES);
+				break;
+			case 'c-series':
+				message.member.addRole(CSERIES);
+				break;
+			case 'mse':
+				message.member.addRole(MSE);
+				break;
+			case 'gonk':
+				message.member.addRole(GONK);
+				break;
+			case 'k-series':
+				message.member.addRole(KSERIES);
+				break;
+			case 'protocol':
+				message.member.addRole(PROTOCOL);
 				break;
 			default:
 				message.reply("Unknown role");
