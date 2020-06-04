@@ -28,14 +28,31 @@ var mustafarWeather = [
     "I need to buy Air Conditioning! \n-Mustafar",
 ];
 
+//Endor
+var endorMoonWeather = [
+    "Tropical! \n-Forest Moon of Endor",
+    "Great weather to cuddle an Ewok \n-Forest Moon of Endor",
+];
+
+//Endoor Moon
+var jakkuWeather = [
+    "Isn\'t this pretty much Tatooine?! \n-Jakku",
+];
+
+//Bespin
+var bespinWeather = [
+    "Pretty cloudy... \n-Bespin",
+];
+
+
 var weatherArray = [
     
     hothWeather,
     tatooineWeather,
     alderaanWeather,
     kaminoWeather,
-    mustafarWeather
-
+    mustafarWeather,
+    endorMoonWeather,
 
 ];
 
