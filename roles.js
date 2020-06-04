@@ -27,12 +27,13 @@ module.exports = {
         assigned = 1;
       }
     }
-    if (assigned == 0) {
+    if (assigned == 0 && role != 'help') {
       message.reply("Unknown role");
       role = 'help';
     }
     if (role == 'help') {
-      output = "The following roles are available: \n";
+      output = "Roles let you show what droids you are working on. You can select multiple roles.\n";
+      output += "The following roles are available: \n";
       for (i = 0; i < roles.length;i++) {
         output += "\t" + roles[i].name + "\n";
       }
