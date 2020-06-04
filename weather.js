@@ -24,25 +24,30 @@ var kaminoWeather = [
 
 //Mustafar
 var mustafarWeather = [
-    "It\'s not just hot... it\'s DAM HOT! \n-Mustafar",
-    "I need to buy Air Conditioning! \n-Mustafar",
+    "It\'s not just hot... it\'s DAM HOT! \n- Mustafar",
+    "I need to buy Air Conditioning! \n- Mustafar",
 ];
 
 //Endor
 var endorMoonWeather = [
     "Tropical! \n-Forest Moon of Endor",
-    "Great weather to cuddle an Ewok \n-Forest Moon of Endor",
+    "Great weather to cuddle an Ewok \n- Forest Moon of Endor",
 ];
 
 //Endoor Moon
 var jakkuWeather = [
-    "Isn\'t this pretty much Tatooine?! \n-Jakku",
+    "Isn\'t this pretty much Tatooine?! \n- Jakku",
 ];
 
 //Bespin
 var bespinWeather = [
-    "Pretty cloudy... \n-Bespin",
+    "Pretty cloudy... \n- Bespin",
 ];
+
+//Dathomir
+var dathomirWeather = [
+     "A bit red, and it smells weird... \n- Dathomir"
+]
 
 
 var weatherArray = [
@@ -54,7 +59,8 @@ var weatherArray = [
     mustafarWeather,
     endorMoonWeather,
     jakkuWeather,
-    bespinWeather
+    bespinWeather,
+    dathomirWeather
 
 ];
 
