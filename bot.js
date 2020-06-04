@@ -15,6 +15,7 @@ client.on('ready', () => {
 	    console.log('I am ready!');
 });
 
+// Wait for messages
 client.on('message', message => {
 	const parts = message.content.split(' ');
 
