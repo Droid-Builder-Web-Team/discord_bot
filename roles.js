@@ -1,5 +1,5 @@
-const csv = require('csv-parser');
-const fs = require('fs');
+const csv = require('csv-parser.js');
+const fs = require('fs.js');
 
 const RSERIES = '717758445956104212';
 const TSERIES = '717758451916210187';
