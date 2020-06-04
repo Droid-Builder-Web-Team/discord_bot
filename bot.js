@@ -61,6 +61,10 @@ client.on('message', message => {
 	if (message.content === '!ping') {
 		message.reply('pong');
 	}
+
+	if (message.content === '!help') {
+		message.reply('The following commands are available: ' + commands);
+	}
 });
 
 // THIS  MUST  BE  THIS  WAY
