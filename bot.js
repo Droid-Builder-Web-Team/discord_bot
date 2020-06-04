@@ -9,6 +9,7 @@ var commands = [
 	"!help",
 	"!role",
 	"!ping",
+	"!join",
 	"!quote" ]
 
 client.on('ready', () => {
@@ -33,7 +34,7 @@ client.on('message', async message => {
 			message.reply('pong');
 		}
 
-		if (message.content === '/join' && message.guild) {
+		if (message.content === '!join' && message.guild) {
 			if (message.member.voice.channel) {
 				const connection = await message.member.voice.channel.join();
 			} else {
