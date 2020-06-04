@@ -55,7 +55,8 @@ client.on('message', message => {
 					message.member.addRole(PROTOCOL);
 					break;
 				case 'help':
-					message.reply("The following roles are available: ")
+					message.reply("The following roles are available: ");
+					break;
 				default:
 					message.reply("Unknown role");
 			}
