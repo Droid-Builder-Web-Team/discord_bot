@@ -1,6 +1,7 @@
 const Discord = require('discord.js'); // Main discord API library
 const Quotes = require('./quotes.js'); // Quotes command
 const Roles = require('./roles.js'); // Roles command
+const Weather = require('./weather.js'); //Weather command
 
 const client = new Discord.Client();
 
@@ -9,14 +10,21 @@ var commands = [
 	"!help",
 	"!role",
 	"!ping",
-	"!quote" ]
+	"!quote",
+	"!weather",
+]
 
 client.on('ready', () => {
 	    console.log('I am ready!');
+//			const cast = client.voice.createBroadcast();
+//			cast.play('./assets/sounds/Cantina_orig.mp3');
+//			for (const connection of client.voice.connections.values()) {
+//			  connection.play(cast);
+//			}
 });
 
 // Wait for messages
-client.on('message', message => {
+client.on('message', async message => {
 	const parts = message.content.split(' ');
 
   if (commands.includes(parts[0])) { // Check that the command is allowed.
@@ -27,6 +35,10 @@ client.on('message', message => {
 
 		if (parts[0] === '!quote') {
 			message.reply(Quotes.generateQuote());
+		}
+
+		if (parts[0] === '!weather') {
+			message.reply(Weather.generateWeather());
 		}
 
 		if (parts[0] === '!ping') {
