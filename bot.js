@@ -33,6 +33,14 @@ client.on('message', message => {
 			message.reply('pong');
 		}
 
+		if (message.content === '/join' && message.guild) {
+			if (message.member.voice.channel) {
+				const connection = await message.member.voice.channel.join();
+			} else {
+				message.reply('You need to join a voice channel first!');
+			}
+		}
+
 		if (parts[0] === '!help') {
 			output = 'The following commands are available: \n';
 			for (i = 0; i < commands.length;i++) {
