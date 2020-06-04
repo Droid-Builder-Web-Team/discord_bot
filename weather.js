@@ -53,11 +53,15 @@ var weatherArray = [
     kaminoWeather,
     mustafarWeather,
     endorMoonWeather,
+    jakkuWeather,
+    bespinWeather
 
 ];
 
 module.exports =  {
     generateWeather: function() {
+    // First get a random array, then get a random index from that array
+    // Math.random() returns a number between 0 and 1. Math.floor rounds a number down to the nearest whole number.
      var randomWeatherArray = weatherArray[Math.floor(Math.random() * weatherArray.length)];
      var randomWeather = randomWeatherArray[Math.floor(Math.random() * randomWeatherArray.length)];
      return randomWeather;
