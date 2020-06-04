@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const Quotes = require('quotes.js');
+const Quotes = require('./quotes.js');
 const client = new Discord.Client();
 
 const RSERIES = '717758445956104212';
@@ -58,7 +58,7 @@ client.on('message', message => {
 	if (message.content === '!quote') {
 		message.reply(Quotes.generateQuote());
 	}
-	
+
 	if (message.content === '!ping') {
 		message.reply('pong');
 	}
