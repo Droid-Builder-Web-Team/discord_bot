@@ -20,14 +20,13 @@ var weatherArray = [
     
     hothWeather,
     tattooineWeather,
-    alderaanWeather,
-
+    alderaanWeather
 ];
 
 module.exports =  {
     generateWeather: function() {
-     randomWeatherArray = weatherArray[Math.floor(Math.random() * weatherArray.length)];
-     randomWeather = randomWeatherArray[Math.floor(Math.random() * randomweatherArray.length)];
+     var randomWeatherArray = weatherArray[Math.floor(Math.random() * weatherArray.length)];
+     var randomWeather = randomWeatherArray[Math.floor(Math.random() * randomweatherArray.length)];
      return randomWeather;
     }
 };
