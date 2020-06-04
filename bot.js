@@ -16,7 +16,7 @@ client.on('ready', () => {
 });
 
 // Wait for messages
-client.on('message', message => {
+client.on('message', async message => {
 	const parts = message.content.split(' ');
 
   if (commands.includes(parts[0])) { // Check that the command is allowed.
