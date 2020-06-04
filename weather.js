@@ -5,22 +5,37 @@ var hothWeather = [
 ];
 
 //Tattooine Weather
-var tattooineWeather = [
-    "I don't like sand... \n- Tattooine",
-    "I hope I get a tan! \n- Tattooine",
+var tatooineWeather = [
+    "I don't like sand... \n- Tatooine",
+    "I hope I get a tan! \n- Tatooine",
 ];
 
 //Alderann Weather
 var alderaanWeather = [
-    "It\'s beautiful! \n- Alderann",
-    "Look at that view, wait... what\'s that green light in the sk.... \n-Alderann",
+    "It\'s beautiful! \n- Alderaan",
+    "Look at that view, wait... what\'s that green light in the sk.... \n-Alderaan",
+];
+
+//Kamino
+var kaminoWeather = [
+    "It\'s pretty wet... \n- Kamino",
+    "Anyone for fishing? \n- Kamino",
+];
+
+//Mustafar
+var mustafarWeather = [
+    "It\'s not just hot... it\'s DAM HOT! \n-Mustafar",
+    "I need to buy Air Conditioning! \n-Mustafar",
 ];
 
 var weatherArray = [
     
     hothWeather,
-    tattooineWeather,
-    alderaanWeather
+    tatooineWeather,
+    alderaanWeather,
+    kaminoWeather,
+    mustafarWeather
+
 
 ];
 
