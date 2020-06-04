@@ -22,6 +22,8 @@ fs.createReadStream(process.env.ROLE_LIST + '.csv')
     console.log('CSV file of roles processed');
   });
 
+console.log(roles)
+
 module.exports = {
   grantRole: function(role, message) {
     if (role == null) {
