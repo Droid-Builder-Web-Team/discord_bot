@@ -1,8 +1,10 @@
-const Discord = require('discord.js');
-const Quotes = require('./quotes.js');
-const Roles = require('./roles.js');
+const Discord = require('discord.js'); // Main discord API library
+const Quotes = require('./quotes.js'); // Quotes command
+const Roles = require('./roles.js'); // Roles command
+
 const client = new Discord.Client();
 
+// List of allowed commands to listen for
 var commands = [
 	"!help",
 	"!role",
@@ -16,9 +18,9 @@ client.on('ready', () => {
 client.on('message', message => {
 	const parts = message.content.split(' ');
 
-  if (commands.includes(parts[0])) {
+  if (commands.includes(parts[0])) { // Check that the command is allowed.
 
-		if (parts[0] == '!role' && message.member != null) {
+		if (parts[0] == '!role' && message.member != null) { //Need to check the message has a member, otherwise crash!
 			Roles.grantRole(parts[1], message);
 		}
 
@@ -31,7 +33,7 @@ client.on('message', message => {
 		}
 
 		if (parts[0] === '!help') {
-			message.reply('The following commands are available: ' + commands);
+			message.reply('The following commands are available: \n' + commands.split(','.join("\n")));
 		}
 	}
 });

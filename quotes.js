@@ -112,7 +112,6 @@ var obiwanQuotes = [ // Obi-Wan Kenobi Quotes
 
 module.exports = {
   generateQuote: function() {
-
     // First get a random array, then get a random index from that array
     // Math.random() returns a number between 0 and 1. Math.floor rounds a number down to the nearest whole number.
     var randomArray = quoteArray[Math.floor(Math.random() * quoteArray.length)];

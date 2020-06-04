@@ -3,17 +3,16 @@ const fs = require('fs');
 
 var roles = [];
 
+// Read in CSV file, as defined by the ROLE_LIST environment variable
 fs.createReadStream(process.env.ROLE_LIST + '.csv')
   .pipe(csv())
   .on('data', (row) => {
-    roles.push(row);
+    roles.push(row); // Add to roles array
     console.log(row);
   })
   .on('end', () => {
     console.log('CSV file of roles processed');
   });
-
-console.log(roles)
 
 module.exports = {
   grantRole: function(role, message) {
