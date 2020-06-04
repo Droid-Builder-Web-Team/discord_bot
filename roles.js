@@ -24,7 +24,7 @@ module.exports = {
     var assigned = 0;
     for (i = 0; i < roles.length;i++) {
       if (roles[i].name == role) {
-        message.member.addRole(role.id);
+        message.member.addRole(roles[i].id);
         assigned = 1;
       }
     }
