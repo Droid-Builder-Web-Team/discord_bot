@@ -30,4 +30,4 @@ module.exports =  {
      randomWeather = randomWeatherArray[Math.floor(Math.random() * randomweatherArray.length)];
      return randomWeather;
     }
-}
+};
