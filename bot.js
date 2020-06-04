@@ -23,7 +23,7 @@ client.on('ready', () => {
 client.on('message', message => {
 	const parts = message.content.split(' ');
 
-  if (commands.includes(part[0])) {
+  if (commands.includes(parts[0])) {
 
 		if (parts[0] == '!role' && message.member != null) {
 			switch(parts[1].toLowerCase()) {
