@@ -23,50 +23,52 @@ client.on('ready', () => {
 client.on('message', message => {
 	const parts = message.content.split(' ');
 
-	if (parts[0] == '!role' && message.member != null) {
-		switch(parts[1]) {
-			case 'r-series':
-				message.member.addRole(RSERIES);
-				break;
-			case 't-series':
-				message.member.addRole(TSERIES);
-				break;
-			case 'bb-series':
-				message.member.addRole(BBSERIES);
-				break;
-			case 'c-series':
-				message.member.addRole(CSERIES);
-				break;
-			case 'mse':
-				message.member.addRole(MSE);
-				break;
-			case 'gonk':
-				message.member.addRole(GONK);
-				break;
-			case 'k-series':
-				message.member.addRole(KSERIES);
-				break;
-			case 'protocol':
-				message.member.addRole(PROTOCOL);
-				break;
-			default:
-				message.reply("Unknown role");
+  if (commands.includes(part[0])) {
+
+		if (parts[0] == '!role' && message.member != null) {
+			switch(parts[1].toLowerCase()) {
+				case 'r-series':
+					message.member.addRole(RSERIES);
+					break;
+				case 't-series':
+					message.member.addRole(TSERIES);
+					break;
+				case 'bb-series':
+					message.member.addRole(BBSERIES);
+					break;
+				case 'c-series':
+					message.member.addRole(CSERIES);
+					break;
+				case 'mse':
+					message.member.addRole(MSE);
+					break;
+				case 'gonk':
+					message.member.addRole(GONK);
+					break;
+				case 'k-series':
+					message.member.addRole(KSERIES);
+					break;
+				case 'protocol':
+					message.member.addRole(PROTOCOL);
+					break;
+				default:
+					message.reply("Unknown role");
+			}
 		}
-	}
 
-	if (message.content === '!quote') {
-		message.reply(Quotes.generateQuote());
-	}
+		if (parts[0] === '!quote') {
+			message.reply(Quotes.generateQuote());
+		}
 
-	if (message.content === '!ping') {
-		message.reply('pong');
-	}
+		if (parts[0] === '!ping') {
+			message.reply('pong');
+		}
 
-	if (message.content === '!help') {
-		message.reply('The following commands are available: ' + commands);
+		if (parts[0] === '!help') {
+			message.reply('The following commands are available: ' + commands);
+		}
 	}
 });
 
-// THIS  MUST  BE  THIS  WAY
 
-client.login(process.env.BOT_TOKEN);//BOT_TOKEN is the Client Secret
+client.login(process.env.BOT_TOKEN);
