@@ -1,6 +1,7 @@
 const Discord = require('discord.js'); // Main discord API library
 const Quotes = require('./quotes.js'); // Quotes command
 const Roles = require('./roles.js'); // Roles command
+const Weather = require('./weather.js'); //Weather command
 
 const client = new Discord.Client();
 
@@ -9,7 +10,9 @@ var commands = [
 	"!help",
 	"!role",
 	"!ping",
-	"!quote" ]
+	"!quote",
+	"!weather",
+]
 
 client.on('ready', () => {
 	    console.log('I am ready!');
@@ -32,6 +35,10 @@ client.on('message', async message => {
 
 		if (parts[0] === '!quote') {
 			message.reply(Quotes.generateQuote());
+		}
+
+		if (parts[0] === '!weather') {
+			message.reply(Weather.generateWeather());
 		}
 
 		if (parts[0] === '!ping') {
