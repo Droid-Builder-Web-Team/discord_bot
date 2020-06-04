@@ -34,7 +34,11 @@ client.on('message', async message => {
 			message.reply('pong');
 		}
 
-		if (message.content === '!join' && message.guild) {
+		if (parts[0] === '!join' && message.member != null) {
+			console.log('message.member: ');
+			console.log(message.member);
+			console.log('message.member.voice: ');
+			console.log(message.member.voice);
 			if (message.member.voice.channel) {
 				const connection = await message.member.voice.channel.join();
 			} else {
