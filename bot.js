@@ -13,11 +13,11 @@ var commands = [
 
 client.on('ready', () => {
 	    console.log('I am ready!');
-			const cast = client.voice.createBroadcast();
-			cast.play('./assets/sounds/Cantina_orig.mp3');
-			for (const connection of client.voice.connections.values()) {
-			  connection.play(cast);
-			}
+//			const cast = client.voice.createBroadcast();
+//			cast.play('./assets/sounds/Cantina_orig.mp3');
+//			for (const connection of client.voice.connections.values()) {
+//			  connection.play(cast);
+//			}
 });
 
 // Wait for messages
