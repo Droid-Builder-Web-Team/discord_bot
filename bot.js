@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+const Quotes = require('quotes.js');
 const client = new Discord.Client();
 
 const RSERIES = '717758445956104212';
@@ -9,6 +10,11 @@ const MSE = '717758456576081970';
 const GONK = '717758461651320864';
 const KSERIES = '717758453912830023';
 const PROTOCOL = '717758463400345681';
+
+var commands = [ "!help",
+	"!role",
+	"!ping",
+	"!quote" ]
 
 client.on('ready', () => {
 	    console.log('I am ready!');
@@ -48,8 +54,12 @@ client.on('message', message => {
 				message.reply("Unknown role");
 		}
 	}
+
+	if (message.content === '!quote') {
+		message.reply(Quotes.generateQuote());
+	}
 	
-	if (message.content === 'ping') {
+	if (message.content === '!ping') {
 		message.reply('pong');
 	}
 });
