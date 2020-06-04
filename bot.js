@@ -26,6 +26,9 @@ client.on('message', message => {
   if (commands.includes(parts[0])) {
 
 		if (parts[0] == '!role' && message.member != null) {
+			if (parts[1] == null) {
+				parts[1] = 'help'
+			}
 			switch(parts[1].toLowerCase()) {
 				case 'r-series':
 					message.member.addRole(RSERIES);
@@ -51,6 +54,8 @@ client.on('message', message => {
 				case 'protocol':
 					message.member.addRole(PROTOCOL);
 					break;
+				case 'help':
+					message.reply("The following roles are available: ")
 				default:
 					message.reply("Unknown role");
 			}
