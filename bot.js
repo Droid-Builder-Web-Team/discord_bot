@@ -21,7 +21,6 @@ client.on('ready', () => {
 });
 
 client.on('message', message => {
-	console.log("Seen a message....");
 	const parts = message.content.split(' ');
 
 	if (parts[0] == '!role' && message.member != null) {
