@@ -43,10 +43,5 @@ client.on('message', message => {
 	}
 });
 
-client.on('guildMemberAdd', (member) => {
-	const channel = member.guild.channels.find(ch => ch.name === 'member-log');
-	if (!channel) return;
-	channel.send(`Welcome to the server, ${member}`);
-});
 
 client.login(process.env.BOT_TOKEN);
