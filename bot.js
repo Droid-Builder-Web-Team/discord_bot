@@ -9,7 +9,6 @@ var commands = [
 	"!help",
 	"!role",
 	"!ping",
-	"!join",
 	"!quote" ]
 
 client.on('ready', () => {
@@ -34,18 +33,6 @@ client.on('message', async message => {
 			message.reply('pong');
 		}
 
-		if (parts[0] === '!join' && message.member != null) {
-			console.log('message.member: ');
-			console.log(message.member);
-			console.log('message.member.voice: ');
-			console.log(message.member.voice);
-			if (message.member.voice.channel) {
-				const connection = await message.member.voice.channel.join();
-			} else {
-				message.reply('You need to join a voice channel first!');
-			}
-		}
-
 		if (parts[0] === '!help') {
 			output = 'The following commands are available: \n';
 			for (i = 0; i < commands.length;i++) {
@@ -58,3 +45,8 @@ client.on('message', async message => {
 
 
 client.login(process.env.BOT_TOKEN);
+const broadcast = client.voice.createBroadcast();
+broadcast.play('./assets/sounds/Cantina_orig.mp3');
+for (const connection of client.voice.connections.values()) {
+  connection.play(broadcast);
+}
