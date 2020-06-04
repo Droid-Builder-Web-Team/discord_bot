@@ -32,7 +32,7 @@ module.exports = {
       role = 'help';
     }
     if (role == 'help') {
-      output = "Roles let you show what droids you are working on. You can select multiple roles.\n"
+      output = "Roles let you show what droids you are working on. You can select multiple roles.\n";
       output += "The following roles are available: \n";
       for (i = 0; i < roles.length;i++) {
         output += "\t" + roles[i].name + "\n";
