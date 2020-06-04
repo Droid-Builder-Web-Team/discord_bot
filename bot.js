@@ -33,7 +33,11 @@ client.on('message', message => {
 		}
 
 		if (parts[0] === '!help') {
-			message.reply('The following commands are available: \n' + commands.split(',').join("\n"));
+			output = 'The following commands are available: \n';
+			for (i = 0; i < commands.length;i++) {
+        output += "\t" + commands[i] + "\n";
+      }
+			message.reply(output);
 		}
 	}
 });

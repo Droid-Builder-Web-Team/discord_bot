@@ -29,6 +29,7 @@ module.exports = {
     }
     if (assigned = 0) {
       message.reply("Unknown role");
+      role = 'help';
     }
     if (role == 'help') {
       output = "The following roles are available: \n";
