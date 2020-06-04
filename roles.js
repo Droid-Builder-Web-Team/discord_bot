@@ -27,7 +27,7 @@ module.exports = {
         assigned = 1;
       }
     }
-    if (assigned = 0) {
+    if (assigned == 0) {
       message.reply("Unknown role");
       role = 'help';
     }
