@@ -2,6 +2,7 @@ const Discord = require('discord.js'); // Main discord API library
 const Quotes = require('./quotes.js'); // Quotes command
 const Roles = require('./roles.js'); // Roles command
 const Weather = require('./weather.js'); //Weather command
+const Never = require('./neverhaveiever.js');
 
 const client = new Discord.Client();
 
@@ -11,7 +12,8 @@ var commands = [
 	"!role",
 	"!ping",
 	"!quote",
-	"!weather",
+	"!neverhaveiever",
+	"!weather"
 ]
 
 client.on('ready', () => {
@@ -43,6 +45,10 @@ client.on('message', async message => {
 
 		if (parts[0] === '!ping') {
 			message.reply('pong');
+		}
+
+		if (parts[0] === '!neverhaveiever') {
+			message.reply(Never.generateChallenge());
 		}
 
 		if (parts[0] === '!help') {
