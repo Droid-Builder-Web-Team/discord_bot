@@ -1,5 +1,5 @@
 var challengeArray = [
-"kahoot.gotten stuck with an elevator with a droid.",
+"gotten stuck with an elevator with a droid.",
 "been invited to a wedding and only the droid was named on the invitation.",
 "forgot to charge my batteries before an event?",
 "Bragged about how my paint job looks.",
@@ -106,7 +106,7 @@ var challengeArray = [
 "built a Mr Baddeley Droid",
 "finished printing version 1 only to see there is a version 2",
 "face planted a droid",
-"watch a droid be face planted",
+"watched a droid be face planted",
 "Never have I watched the legs come off a droid.",
 "Never have I laughed when someone faceplanted a droid",
 "Never have I wanted to run kids over with my droid.",
