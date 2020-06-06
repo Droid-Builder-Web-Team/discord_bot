@@ -12,8 +12,8 @@ var commands = [
 	"!role",
 	"!ping",
 	"!quote",
-	"!neverhaveiever"
-	"!weather",
+	"!neverhaveiever",
+	"!weather"
 ]
 
 client.on('ready', () => {
