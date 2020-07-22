@@ -29,6 +29,13 @@ client.on('ready', () => {
 client.on('message', async message => {
 	const parts = message.content.split(' ');
 
+	bot.on('guildMemberAdd', member =>{
+		const channel = member.guild.channels.find(channel => channel.name === "general-chat");
+		if(!channel) return;
+
+		channel.send(`Welcome ${member}, we have been expecting you...`)
+	});
+
   if (commands.includes(parts[0])) { // Check that the command is allowed.
 
 		if (parts[0] == '!role' && message.member != null) { //Need to check the message has a member, otherwise crash!
@@ -50,6 +57,8 @@ client.on('message', async message => {
 		if (parts[0] === '!neverhaveiever') {
 			message.reply(Never.generateChallenge());
 		}
+
+		
 
 		if (parts[0] === '!help') {
 			output = 'The following commands are available: \n';
