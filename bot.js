@@ -24,17 +24,16 @@ client.on('ready', () => {
 //			  connection.play(cast);
 //			}
 });
+const client = new Discord.Client();
+client.on('guildMemberAdd', member =>{
+	const channel = member.guild.channels.find(channel => channel.name === "general-chat");
+	if(!channel) return;
 
+	channel.send(`Welcome ${member}, we have been expecting you...`)
+});
 // Wait for messages
 client.on('message', async message => {
 	const parts = message.content.split(' ');
-
-	bot.on('guildMemberAdd', member =>{
-		const channel = member.guild.channels.find(channel => channel.name === "general-chat");
-		if(!channel) return;
-
-		channel.send(`Welcome ${member}, we have been expecting you...`)
-	});
 
   if (commands.includes(parts[0])) { // Check that the command is allowed.
 
