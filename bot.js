@@ -1,8 +1,8 @@
 const Discord = require('discord.js'); // Main discord API library
 const Quotes = require('./quotes.js'); // Quotes command
 const Roles = require('./roles.js'); // Roles command
-const Weather = require('./weather.js'); //Weather command
-const Never = require('./neverhaveiever.js');
+const Weather = require('./weather.js'); // Weather command
+const Never = require('./neverhaveiever.js'); // Never Have I Ever command
 
 const client = new Discord.Client();
 
@@ -13,7 +13,7 @@ var commands = [
 	"!ping",
 	"!quote",
 	"!neverhaveiever",
-	"!weather"
+	"!weather",
 ]
 
 client.on('ready', () => {
@@ -28,6 +28,13 @@ client.on('ready', () => {
 // Wait for messages
 client.on('message', async message => {
 	const parts = message.content.split(' ');
+
+	bot.on('guildMemberAdd', member =>{
+		const channel = member.guild.channels.find(channel => channel.name === "general-chat");
+		if(!channel) return;
+
+		channel.send(`Welcome ${member}, we have been expecting you...`)
+	});
 
   if (commands.includes(parts[0])) { // Check that the command is allowed.
 
@@ -50,6 +57,8 @@ client.on('message', async message => {
 		if (parts[0] === '!neverhaveiever') {
 			message.reply(Never.generateChallenge());
 		}
+
+		
 
 		if (parts[0] === '!help') {
 			output = 'The following commands are available: \n';
