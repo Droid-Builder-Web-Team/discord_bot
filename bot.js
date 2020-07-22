@@ -24,7 +24,6 @@ client.on('ready', () => {
 //			  connection.play(cast);
 //			}
 });
-const client = new Discord.Client();
 client.on('guildMemberAdd', member =>{
 	const channel = member.guild.channels.find(channel => channel.name === "general-chat");
 	if(!channel) return;
