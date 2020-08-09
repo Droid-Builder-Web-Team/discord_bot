@@ -3,7 +3,7 @@ const Quotes = require('./quotes.js'); // Quotes command
 const Roles = require('./roles.js'); // Roles command
 const Weather = require('./weather.js'); // Weather command
 const Never = require('./neverhaveiever.js'); // Never Have I Ever command
-const Joke = require('./jokes.js'); //Jokes Command
+const Joke = require('./joke.js'); //Jokes Command
 
 const client = new Discord.Client();
 
