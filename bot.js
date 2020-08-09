@@ -3,6 +3,7 @@ const Quotes = require('./quotes.js'); // Quotes command
 const Roles = require('./roles.js'); // Roles command
 const Weather = require('./weather.js'); // Weather command
 const Never = require('./neverhaveiever.js'); // Never Have I Ever command
+const Joke = require('./jokes.js'); //Jokes Command
 
 const client = new Discord.Client();
 
@@ -14,6 +15,7 @@ var commands = [
 	"!quote",
 	"!neverhaveiever",
 	"!weather",
+	"!joke",
 ]
 
 client.on('ready', () => {
@@ -28,7 +30,7 @@ client.on('guildMemberAdd', member =>{
 	const channel = member.guild.channels.find(channel => channel.name === "general-chat");
 	if(!channel) return;
 
-	channel.send(`Welcome ${member}, we have been expecting you...`)
+	channel.send(`Welcome ${member}, we have been expecting you...`)//TODO - Call from a selection of greetings
 });
 // Wait for messages
 client.on('message', async message => {
@@ -54,6 +56,10 @@ client.on('message', async message => {
 
 		if (parts[0] === '!neverhaveiever') {
 			message.reply(Never.generateChallenge());
+		}
+
+		if(parts[0] === '!joke') {
+			message.reply(Joke.generateJoke());
 		}
 
 		
