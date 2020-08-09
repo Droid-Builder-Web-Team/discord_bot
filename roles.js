@@ -23,7 +23,8 @@ module.exports = {
     var assigned = 0;
     for (i = 0; i < roles.length;i++) {
       if (roles[i].name == role) {
-        message.member.addRole(roles[i].id);
+        //message.member.addRole(roles[i].id);
+	member.roles.add(roles[i].id);
         assigned = 1;
       }
     }
