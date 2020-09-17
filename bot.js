@@ -27,7 +27,7 @@ client.on('ready', () => {
 //			}
 });
 client.on('guildMemberAdd', member =>{
-	const channel = member.guild.channels.find(channel => channel.name === "general-chat");
+	const channel = member.guild.channels.cache.find(channel => channel.name === "general-chat");
 	if(!channel) return;
 
 	channel.send(`Welcome ${member}, we have been expecting you...`)//TODO - Call from a selection of greetings
