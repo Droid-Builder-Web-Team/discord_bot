@@ -31,7 +31,9 @@ client.on('ready', () => {
 //			for (const connection of client.voice.connections.values()) {
 //			  connection.play(cast);
 //			}
-	client.channels.cache.get(greet_channel).send('Beep Boop');
+	let channel = client.channels.cache.get(greet_channel);
+	console.log('Greet channel: ${channel.name}');
+	channel.send('Beep Boop');
 
 
 });
