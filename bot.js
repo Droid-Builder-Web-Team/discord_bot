@@ -6,6 +6,8 @@ const Never = require('./neverhaveiever.js'); // Never Have I Ever command
 const Joke = require('./joke.js'); //Jokes Command
 const Welcome = require('./welcome.js'); // Welcome Messages
 
+const util = require('util')
+
 const client = new Discord.Client({
 			ws: { intents: ["GUILD_MEMBERS"] }
 		});
@@ -31,7 +33,7 @@ client.on('ready', () => {
 //			for (const connection of client.voice.connections.values()) {
 //			  connection.play(cast);
 //			}
-	console.log('Channels: ' + client.channels);
+	console.log('Channels: ' + util.inspect(client.channels, {showHidden: false, depth: null}));
 	let channel = client.channels.cache.get(greet_channel);
 	console.log('Greet channel: ${channel.name}');
 	channel.send('Beep Boop');
