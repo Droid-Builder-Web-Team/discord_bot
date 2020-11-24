@@ -5,7 +5,9 @@ const Weather = require('./weather.js'); // Weather command
 const Never = require('./neverhaveiever.js'); // Never Have I Ever command
 const Joke = require('./joke.js'); //Jokes Command
 
-const client = new Discord.Client();
+const client = new Discord.Client({
+			ws: { intents: ["GUILD_MEMBERS"] }
+		});
 
 // List of allowed commands to listen for
 var commands = [
