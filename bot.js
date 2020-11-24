@@ -6,8 +6,6 @@ const Never = require('./neverhaveiever.js'); // Never Have I Ever command
 const Joke = require('./joke.js'); //Jokes Command
 const Welcome = require('./welcome.js'); // Welcome Messages
 
-const util = require('util')
-
 const client = new Discord.Client({
 			ws: { intents: ["GUILD_MEMBERS"] }
 		});
@@ -31,13 +29,13 @@ client.on('ready', (response) => {
 	console.log('Response: ' + response);
 	client.channels.fetch(admin_channel_id)
 		.then(channel => channel.send('Beep Boop'))
-		.catch(console.log("Errororoooorororor"));
+		.catch(console.error);
 
 });
 
 client.on('guildMemberAdd', member =>{
 	console.log('Member joined....');
-        client.channels.fetch(admin_channel_id)
+        client.channels.fetch(greet_channel_id)
                 .then(channel => channel.send(Welcome.generateWelcome().replace('MEMBER_NAME', member.user)))
                 .catch(console.error);
 
