@@ -30,7 +30,7 @@ client.on('ready', (response) => {
 	console.log('I am ready! ' + client.user.tag);
 	console.log('Response: ' + response);
 	client.channels.fetch('715193623129489429')
-		.then(channel => console.log('Promised channel: ' + channel))
+		.then(channel => console.log('Promised channel: ' + channel.name))
 		.catch(console.log("Errororoooorororor"));
 	console.log('Channels: ' + util.inspect(client.channels.fetch('715193623129489429'), {showHidden: false, depth: null}));
 
