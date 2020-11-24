@@ -31,7 +31,8 @@ client.on('ready', () => {
 //			for (const connection of client.voice.connections.values()) {
 //			  connection.play(cast);
 //			}
-	client.channels.cache.find(channel => channel.name === 'admin-chat').send('Beep Boop');
+	client.channels.get(greet_channel).send('Beep Boop');
+
 
 });
 
