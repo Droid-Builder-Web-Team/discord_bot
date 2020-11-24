@@ -5,7 +5,7 @@ var welcomeArray = [
 
 module.exports = {
     generateWelcome: function() {
-      randomWelcome = textArray[Math.floor(Math.random() * textArray.length)];
+      randomWelcome = welcomeArray[Math.floor(Math.random() * welcomeArray.length)];
       return randomWelcome;
     }
   };
