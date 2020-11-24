@@ -31,11 +31,8 @@ client.on('ready', (response) => {
 	console.log('Response: ' + response);
 	client.channels.fetch('715193623129489429')
 		.then(channel => console.log('Promised channel: ' + channel))
-		.catch(console.error);
+		.catch(console.log("Errororoooorororor");
 	console.log('Channels: ' + util.inspect(client.channels.fetch('715193623129489429'), {showHidden: false, depth: null}));
-	console.log('Greet channel: ' + channel.name);
-
-	channel.send('Beep Boop');
 
 
 });
