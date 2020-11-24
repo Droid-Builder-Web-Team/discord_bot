@@ -32,15 +32,9 @@ function sleep(ms) {
 }
 
 client.on('ready', () => {
-	    console.log('I am ready! ' + client.user.tag);
-//			const cast = client.voice.createBroadcast();
-//			cast.play('./assets/sounds/Cantina_orig.mp3');
-//			for (const connection of client.voice.connections.values()) {
-//			  connection.play(cast);
-//			}
-	console.log('Channels: ' + util.inspect(client.channels.fetch(greet_channel), {showHidden: false, depth: null}));
+	console.log('I am ready! ' + client.user.tag);
 	channel = client.channels.cache.get('715193623129489429');
-	sleep(2000);
+	console.log('Channels: ' + util.inspect(channel, {showHidden: false, depth: null}));
 	console.log('Greet channel: ' + channel.name);
 
 	channel.send('Beep Boop');
