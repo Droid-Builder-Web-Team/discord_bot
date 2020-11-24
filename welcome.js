@@ -1,6 +1,6 @@
 var welcomeArray = [
-    "Welcome ${member}, we've been expecting you",
-    "May the force be with you, ${member}"
+    "Welcome MEMBER_NAME, we've been expecting you",
+    "May the force be with you, MEMBER_NAME"
   ];
 
 module.exports = {
