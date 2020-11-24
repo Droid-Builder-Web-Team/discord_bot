@@ -14,7 +14,6 @@ const client = new Discord.Client({
 
 //const greet_channel = '714247035825422400'; // general-chat Channel
 const greet_channel_id = '715193623129489429'; // Admin Channel
-const greet_channel = '';
 
 // List of allowed commands to listen for
 var commands = [
@@ -31,9 +30,8 @@ client.on('ready', (response) => {
 	console.log('I am ready! ' + client.user.tag);
 	console.log('Response: ' + response);
 	client.channels.fetch('715193623129489429')
-		.then(function(data) { greet_channel = data;})
+		.then(channel => channel.send('Beep Boop'))
 		.catch(console.log("Errororoooorororor"));
-	greet_channel.send('Beep Boop');
 
 });
 
