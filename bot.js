@@ -26,6 +26,10 @@ var commands = [
 	"!joke",
 ]
 
+let channel_id = function(data) {
+	return client.channels.fetch(data).then(channel => {return channel } )
+}
+
 client.on('ready', () => {
 	    console.log('I am ready! ' + client.user.tag);
 //			const cast = client.voice.createBroadcast();
@@ -33,8 +37,8 @@ client.on('ready', () => {
 //			for (const connection of client.voice.connections.values()) {
 //			  connection.play(cast);
 //			}
-	console.log('Channels: ' + util.inspect(client.channels.cache.fetch(greet_channel), {showHidden: false, depth: null}));
-	let channel = client.channels.cache.fetch(greet_channel);
+	console.log('Channels: ' + util.inspect(client.channels.fetch(greet_channel), {showHidden: false, depth: null}));
+	let channel = await channel_id(greet_channel);
 	console.log('Greet channel: ' + channel.name);
 	channel.send('Beep Boop');
 
