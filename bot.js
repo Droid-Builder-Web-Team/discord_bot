@@ -33,9 +33,9 @@ client.on('ready', () => {
 //			for (const connection of client.voice.connections.values()) {
 //			  connection.play(cast);
 //			}
-	console.log('Channels: ' + util.inspect(client.channels.cache.array(), {showHidden: false, depth: null}));
-	let channel = client.channels.cache.get(greet_channel);
-	console.log('Greet channel: ${channel.name}');
+	console.log('Channels: ' + util.inspect(client.channels.fetch(greet_channel), {showHidden: false, depth: null}));
+	let channel = client.channels.fetch(greet_channel);
+	console.log('Greet channel: ' + channel.name});
 	channel.send('Beep Boop');
 
 
