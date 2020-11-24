@@ -34,7 +34,7 @@ client.on('ready', () => {
 //			  connection.play(cast);
 //			}
 	console.log('Channels: ' + util.inspect(client.channels.fetch(greet_channel), {showHidden: false, depth: null}));
-	channel = client.channels.cache.get('715193623129489429');
+	channel = await client.channels.cache.get('715193623129489429');
 	console.log('Greet channel: ' + channel.name);
 
 	channel.send('Beep Boop');
