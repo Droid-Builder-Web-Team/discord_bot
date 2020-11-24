@@ -31,7 +31,7 @@ client.on('ready', (response) => {
 	console.log('Response: ' + response);
 	client.channels.fetch('715193623129489429')
 		.then(channel => console.log('Promised channel: ' + channel))
-		.catch(console.log("Errororoooorororor");
+		.catch(console.log("Errororoooorororor"));
 	console.log('Channels: ' + util.inspect(client.channels.fetch('715193623129489429'), {showHidden: false, depth: null}));
 
 
