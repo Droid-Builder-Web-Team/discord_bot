@@ -25,12 +25,13 @@ var commands = [
 ]
 
 client.on('ready', () => {
-	    console.log('I am ready!');
+	    console.log('I am ready! ' + client.user.tag);
 //			const cast = client.voice.createBroadcast();
 //			cast.play('./assets/sounds/Cantina_orig.mp3');
 //			for (const connection of client.voice.connections.values()) {
 //			  connection.play(cast);
 //			}
+	console.log('Channels: ' + client.channels);
 	let channel = client.channels.cache.get(greet_channel);
 	console.log('Greet channel: ${channel.name}');
 	channel.send('Beep Boop');
