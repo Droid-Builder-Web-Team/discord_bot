@@ -31,7 +31,7 @@ client.on('ready', (response) => {
 	console.log('I am ready! ' + client.user.tag);
 	console.log('Response: ' + response);
 	client.channels.fetch('715193623129489429')
-		.then(channel => let greet_channel = channel))
+		.then(channel => let greet_channel = channel)
 		.catch(console.log("Errororoooorororor"));
 	greet_channel.send('Beep Boop');
 
