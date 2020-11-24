@@ -26,13 +26,9 @@ var commands = [
 	"!joke",
 ]
 
-function sleep(ms) {
-    var unixtime_ms = new Date().getTime();
-    while(new Date().getTime() < unixtime_ms + ms) {}
-}
-
-client.on('ready', () => {
+client.on('ready', (response) => {
 	console.log('I am ready! ' + client.user.tag);
+	console.log('Response: ' + response);
 	channel = client.channels.cache.get('715193623129489429');
 	console.log('Channels: ' + util.inspect(channel, {showHidden: false, depth: null}));
 	console.log('Greet channel: ' + channel.name);
