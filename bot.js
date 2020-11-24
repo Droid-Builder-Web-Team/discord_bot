@@ -32,7 +32,7 @@ client.on('ready', (response) => {
 	client.channels.cache.fetch('715193623129489429')
 		.then(channel => console.log(channel.name))
 		.catch(console.error);
-	console.log('Channels: ' + util.inspect(client.channels.cache.fetch('715193623129489429'), {showHidden: false, depth: null}));
+	console.log('Channels: ' + util.inspect(client.channels.fetch('715193623129489429'), {showHidden: false, depth: null}));
 	console.log('Greet channel: ' + channel.name);
 
 	channel.send('Beep Boop');
