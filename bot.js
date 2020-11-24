@@ -27,6 +27,7 @@ client.on('ready', () => {
 //			}
 });
 client.on('guildMemberAdd', member =>{
+	console.log('Member joined....');
 	const channel = member.guild.channels.cache.find(channel => channel.name === "general-chat");
 	if(!channel) return;
 
