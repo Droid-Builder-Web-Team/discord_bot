@@ -4,10 +4,14 @@ const Roles = require('./roles.js'); // Roles command
 const Weather = require('./weather.js'); // Weather command
 const Never = require('./neverhaveiever.js'); // Never Have I Ever command
 const Joke = require('./joke.js'); //Jokes Command
+const Welcome = require('./welcome.js'); // Welcome Messages
 
 const client = new Discord.Client({
 			ws: { intents: ["GUILD_MEMBERS"] }
 		});
+
+//const greet_channel = '714247035825422400'; // general-chat Channel
+const greet_channel = '715193623129489429'; // Admin Channel
 
 // List of allowed commands to listen for
 var commands = [
@@ -31,10 +35,8 @@ client.on('ready', () => {
 
 client.on('guildMemberAdd', member =>{
 	console.log('Member joined....');
-	const channel = member.guild.channels.cache.find(channel => channel.name === "general-chat");
-	console.log('Channel: ' + channel);
-	if(!channel) return;
-		channel.send(`Welcome ${member}, we have been expecting you...`)//TODO - Call from a selection of greetings
+	//client.channels.cache.get(greet_channel).send(`Welcome ${member}, we have been expecting you...`);
+	client.channels.cache.get(greet_channel).send(Welcome.generateWelcome());
 });
 
 // Wait for messages
