@@ -27,7 +27,8 @@ var commands = [
 ]
 
 function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
+    var unixtime_ms = new Date().getTime();
+    while(new Date().getTime() < unixtime_ms + ms) {}
 }
 
 client.on('ready', () => {
@@ -39,7 +40,7 @@ client.on('ready', () => {
 //			}
 	console.log('Channels: ' + util.inspect(client.channels.fetch(greet_channel), {showHidden: false, depth: null}));
 	channel = client.channels.cache.get('715193623129489429');
-	await sleep(2000);
+	sleep(2000);
 	console.log('Greet channel: ' + channel.name);
 
 	channel.send('Beep Boop');
