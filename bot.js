@@ -12,8 +12,8 @@ const client = new Discord.Client({
 			ws: { intents: ["GUILD_MEMBERS"] }
 		});
 
-//const greet_channel = '714247035825422400'; // general-chat Channel
-const greet_channel_id = '715193623129489429'; // Admin Channel
+const greet_channel_id = '714247035825422400'; // general-chat Channel
+const admin_channel_id = '715193623129489429'; // Admin Channel
 
 // List of allowed commands to listen for
 var commands = [
@@ -29,7 +29,7 @@ var commands = [
 client.on('ready', (response) => {
 	console.log('I am ready! ' + client.user.tag);
 	console.log('Response: ' + response);
-	client.channels.fetch('715193623129489429')
+	client.channels.fetch(admin_channel_id)
 		.then(channel => channel.send('Beep Boop'))
 		.catch(console.log("Errororoooorororor"));
 
@@ -37,8 +37,10 @@ client.on('ready', (response) => {
 
 client.on('guildMemberAdd', member =>{
 	console.log('Member joined....');
-	//client.channels.cache.get(greet_channel).send(`Welcome ${member}, we have been expecting you...`);
-	client.channels.cache.get(greet_channel).send(Welcome.generateWelcome());
+        client.channels.fetch(greet_channel_id)
+                .then(channel => channel.send(Welcome.generateWelcome())
+                .catch(console.error);
+
 });
 
 // Wait for messages
