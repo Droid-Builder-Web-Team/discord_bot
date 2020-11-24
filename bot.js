@@ -26,6 +26,10 @@ var commands = [
 	"!joke",
 ]
 
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 client.on('ready', () => {
 	    console.log('I am ready! ' + client.user.tag);
 //			const cast = client.voice.createBroadcast();
@@ -34,7 +38,8 @@ client.on('ready', () => {
 //			  connection.play(cast);
 //			}
 	console.log('Channels: ' + util.inspect(client.channels.fetch(greet_channel), {showHidden: false, depth: null}));
-	channel = await client.channels.cache.get('715193623129489429');
+	channel = client.channels.cache.get('715193623129489429');
+	await sleep(2000);
 	console.log('Greet channel: ' + channel.name);
 
 	channel.send('Beep Boop');
