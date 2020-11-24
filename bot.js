@@ -30,8 +30,8 @@ var commands = [
 client.on('ready', (response) => {
 	console.log('I am ready! ' + client.user.tag);
 	console.log('Response: ' + response);
-	greet_channel = client.channels.fetch('715193623129489429')
-		.then(channel => return channel)
+	client.channels.fetch('715193623129489429')
+		.then(function(data) { greet_channel = data;})
 		.catch(console.log("Errororoooorororor"));
 	greet_channel.send('Beep Boop');
 
