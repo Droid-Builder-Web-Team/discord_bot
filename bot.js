@@ -28,13 +28,15 @@ client.on('ready', () => {
 //			  connection.play(cast);
 //			}
 });
+
 client.on('guildMemberAdd', member =>{
 	console.log('Member joined....');
 	const channel = member.guild.channels.cache.find(channel => channel.name === "general-chat");
+	console.log('Channel: ' + channel);
 	if(!channel) return;
-
-	channel.send(`Welcome ${member}, we have been expecting you...`)//TODO - Call from a selection of greetings
+		channel.send(`Welcome ${member}, we have been expecting you...`)//TODO - Call from a selection of greetings
 });
+
 // Wait for messages
 client.on('message', async message => {
 	const parts = message.content.split(' ');
