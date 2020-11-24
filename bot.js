@@ -29,8 +29,10 @@ var commands = [
 client.on('ready', (response) => {
 	console.log('I am ready! ' + client.user.tag);
 	console.log('Response: ' + response);
-	channel = client.channels.cache.get('715193623129489429');
-	console.log('Channels: ' + util.inspect(client.channels.cache, {showHidden: false, depth: null}));
+	client.channels.cache.fetch('715193623129489429')
+		.then(channel => console.log(channel.name))
+		.catch(console.error);
+	console.log('Channels: ' + util.inspect(client.channels.cache.fetch('715193623129489429'), {showHidden: false, depth: null}));
 	console.log('Greet channel: ' + channel.name);
 
 	channel.send('Beep Boop');
