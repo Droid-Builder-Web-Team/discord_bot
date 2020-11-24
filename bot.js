@@ -31,7 +31,7 @@ client.on('ready', () => {
 //			for (const connection of client.voice.connections.values()) {
 //			  connection.play(cast);
 //			}
-	client.channels.get(greet_channel).send('Beep Boop');
+	client.channels.cache.get(greet_channel).send('Beep Boop');
 
 
 });
