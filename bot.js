@@ -35,7 +35,7 @@ client.on('ready', () => {
 //			}
 	console.log('Channels: ' + util.inspect(client.channels.fetch(greet_channel), {showHidden: false, depth: null}));
 	let channel = client.channels.fetch(greet_channel);
-	console.log('Greet channel: ' + channel.name});
+	console.log('Greet channel: ' + channel.name);
 	channel.send('Beep Boop');
 
 
