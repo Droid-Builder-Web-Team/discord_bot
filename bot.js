@@ -6,12 +6,12 @@ const Never = require('./neverhaveiever.js'); // Never Have I Ever command
 const Joke = require('./joke.js'); //Jokes Command
 const Welcome = require('./welcome.js'); // Welcome Messages
 
-/* const client = new Discord.Client({
-			ws: { intents: ["GUILD_MEMBERS"] }
+const client = new Discord.Client({
+			ws: { intents: ["GUILD_MEMBERS", "GUILD_PRESENCES"] }
 		});
-		*/
 
-const client = new Discord.Client();
+
+//const client = new Discord.Client();
 
 const greet_channel_id = '714247035825422400'; // general-chat Channel
 const admin_channel_id = '715193623129489429'; // Admin Channel
@@ -46,7 +46,6 @@ client.on('guildMemberAdd', member =>{
 // Wait for messages
 client.on('message', async message => {
 	const parts = message.content.split(' ');
-	console.log('Message heard....');
 
   if (commands.includes(parts[0])) { // Check that the command is allowed.
 	  	console.log('Command heard!');
@@ -86,7 +85,6 @@ client.on('message', async message => {
 		}
 	  console.log('Command processed.');
 	}
-	console.log('End of message loop');
 });
 
 
