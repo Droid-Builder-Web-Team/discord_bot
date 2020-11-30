@@ -26,7 +26,6 @@ var commands = [
 
 client.on('ready', (response) => {
 	console.log('I am ready! ' + client.user.tag);
-	console.log('Response: ' + response);
 	client.channels.fetch(admin_channel_id)
 		.then(channel => channel.send('Beep Boop'))
 		.catch(console.error);
@@ -44,8 +43,10 @@ client.on('guildMemberAdd', member =>{
 // Wait for messages
 client.on('message', async message => {
 	const parts = message.content.split(' ');
+	console.log('Message heard....');
 
   if (commands.includes(parts[0])) { // Check that the command is allowed.
+	  	console.log('Command heard!');
 
 		if (parts[0] == '!role' && message.member != null) { //Need to check the message has a member, otherwise crash!
 			Roles.grantRole(parts[1], message);
