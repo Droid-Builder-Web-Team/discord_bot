@@ -81,7 +81,9 @@ client.on('message', async message => {
       }
 			message.reply(output);
 		}
+	  console.log('Command processed.');
 	}
+	console.log('End of message loop');
 });
 
 
