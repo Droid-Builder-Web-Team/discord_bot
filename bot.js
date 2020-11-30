@@ -7,7 +7,13 @@ const Joke = require('./joke.js'); //Jokes Command
 const Welcome = require('./welcome.js'); // Welcome Messages
 
 const client = new Discord.Client({
-			ws: { intents: ["GUILD_MEMBERS", "GUILD_PRESENCES"] }
+			ws: { intents: 
+				[
+					"GUILD_MEMBERS", 
+					"GUILD_PRESENCES",
+					"GUILD_MESSAGES"
+				] 
+			}
 		});
 
 
