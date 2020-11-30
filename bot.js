@@ -6,9 +6,12 @@ const Never = require('./neverhaveiever.js'); // Never Have I Ever command
 const Joke = require('./joke.js'); //Jokes Command
 const Welcome = require('./welcome.js'); // Welcome Messages
 
-const client = new Discord.Client({
+/* const client = new Discord.Client({
 			ws: { intents: ["GUILD_MEMBERS"] }
 		});
+		*/
+
+const client = new Discord.Client();
 
 const greet_channel_id = '714247035825422400'; // general-chat Channel
 const admin_channel_id = '715193623129489429'; // Admin Channel
