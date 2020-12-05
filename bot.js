@@ -35,7 +35,7 @@ var commands = [
 
 client.on('ready', (response) => {
 	console.log('I am ready! ' + client.user.tag);
-	client.channels.fetch(admin_channel_id)
+	client.channels.fetch(greet_channel_id)
 		.then(channel => channel.send('Beep Boop'))
 		.catch(console.error);
 
