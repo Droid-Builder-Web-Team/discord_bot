@@ -51,7 +51,7 @@ client.on('guildMemberAdd', member =>{
 
 // Wait for messages
 client.on('message', async message => {
-	const parts = message.content.split(' ').toLowerCase();
+	const parts = message.content.toLowerCase().split(' ');
 
   if (commands.includes(parts[0])) { // Check that the command is allowed.
 	  	console.log('Command heard!');
