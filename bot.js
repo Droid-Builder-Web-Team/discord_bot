@@ -35,9 +35,11 @@ var commands = [
 
 client.on('ready', (response) => {
 	console.log('I am ready! ' + client.user.tag);
-	client.channels.fetch(admin_channel_id)
-		.then(channel => channel.send('Beep Boop'))
-		.catch(console.error);
+	console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
+	client.user.setActivity('Ask me for !help');
+//	client.channels.fetch(admin_channel_id)
+//		.then(channel => channel.send('Beep Boop'))
+//		.catch(console.error);
 
 });
 
@@ -91,6 +93,10 @@ client.on('message', async message => {
 		}
 	  console.log('Command processed.');
 	}
+});
+
+client.on("warn", function(info){
+    console.log(`warn: ${info}`);
 });
 
 
