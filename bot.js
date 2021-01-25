@@ -46,7 +46,7 @@ client.on('guildMemberAdd', member =>{
 	console.log('Member joined....');
     client.channels.fetch(greet_channel_id)
         .then(channel => channel.send(
-        	Welcome.generateWelcome(member.user)
+        	Welcome.generateWelcome(member)
         ))
         .catch(console.error);
 });
