@@ -18,7 +18,6 @@ const Welcome = require('./welcome.js'); // Welcome Messages
 
 
 const client = new Discord.Client();
-
 const greet_channel_id = '714247035825422400'; // general-chat Channel
 const admin_channel_id = '715193623129489429'; // Admin Channel
 
@@ -30,7 +29,7 @@ var commands = [
 	"!quote",
 	"!neverhaveiever",
 	"!weather",
-	"!joke",
+	"!joke"
 ]
 
 client.on('ready', (response) => {
@@ -45,10 +44,11 @@ client.on('ready', (response) => {
 
 client.on('guildMemberAdd', member =>{
 	console.log('Member joined....');
-        client.channels.fetch(greet_channel_id)
-                .then(channel => channel.send(Welcome.generateWelcome().replace('MEMBER_NAME', member.user)))
-                .catch(console.error);
-
+    client.channels.fetch(greet_channel_id)
+        .then(channel => channel.send(
+        	Welcome.generateWelcome(member.user)
+        ))
+        .catch(console.error);
 });
 
 // Wait for messages
@@ -82,15 +82,15 @@ client.on('message', async message => {
 			message.reply(Joke.generateJoke());
 		}
 
-		
-
 		if (parts[0] === '!help') {
 			output = 'The following commands are available: \n';
 			for (i = 0; i < commands.length;i++) {
-        output += "\t" + commands[i] + "\n";
-      }
+        		output += "\t" + commands[i] + "\n";
+        	}
+
 			message.reply(output);
 		}
+
 	  console.log('Command processed.');
 	}
 });
