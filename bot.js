@@ -5,6 +5,8 @@ const Weather = require('./weather.js'); // Weather command
 const Never = require('./neverhaveiever.js'); // Never Have I Ever command
 const Joke = require('./joke.js'); //Jokes Command
 const Welcome = require('./welcome.js'); // Welcome Messages
+const Links = require('./links.js') // Links Command
+const LocalToken = require('./localbot.json');
 
 //const client = new Discord.Client({
 //			ws: { intents: 
@@ -23,7 +25,7 @@ const greet_channel_id = '714247035825422400'; // general-chat Channel
 const admin_channel_id = '715193623129489429'; // Admin Channel
 
 // List of allowed commands to listen for
-var commands = [
+const commands = [
 	"!help",
 	"!role",
 	"!ping",
@@ -31,7 +33,10 @@ var commands = [
 	"!neverhaveiever",
 	"!weather",
 	"!joke",
-]
+	"!links",
+	"!link-suggestion"
+];
+
 
 client.on('ready', (response) => {
 	console.log('I am ready! ' + client.user.tag);
@@ -55,7 +60,7 @@ client.on('guildMemberAdd', member =>{
 client.on('message', async message => {
 	const parts = message.content.toLowerCase().split(' ');
 
-  if (commands.includes(parts[0])) { // Check that the command is allowed.
+  	if (commands.includes(parts[0])) { // Check that the command is allowed.
 	  	console.log('Command heard!');
 
 		if (parts[0] == '!role' && message.member != null) { //Need to check the message has a member, otherwise crash!
@@ -82,16 +87,30 @@ client.on('message', async message => {
 			message.reply(Joke.generateJoke());
 		}
 
-		
+		if (parts[0] === '!links') {
+			message.reply(Links.generateLinks(parts[1]));
+		}
+
+		if (parts[0] === '!link-suggestion') {
+			if (!parts[1] || !parts[2] || !parts[3]) {
+				message.reply('To suggest a link be added, please use `!link-suggestion URL | CATEGORY | DESCRIPTION`');
+			} else {
+				Links.makeSuggestion(message);
+				message.reply('Thank you! I have captured this link and will humans review shortly!');
+			}
+		}
 
 		if (parts[0] === '!help') {
 			output = 'The following commands are available: \n';
+
 			for (i = 0; i < commands.length;i++) {
-        output += "\t" + commands[i] + "\n";
-      }
+		        output += "\t" + commands[i] + "\n";
+		    }
+
 			message.reply(output);
 		}
-	  console.log('Command processed.');
+
+		console.log('Command processed.');
 	}
 });
 
@@ -100,4 +119,8 @@ client.on("warn", function(info){
 });
 
 
-client.login(process.env.BOT_TOKEN);
+client.login(
+	(process.argv.indexOf('--local') !== -1) 
+		? LocalToken.token 
+		: process.env.BOT_TOKEN
+	);
