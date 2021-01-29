@@ -5,8 +5,11 @@ const Weather = require('./weather.js'); // Weather command
 const Never = require('./neverhaveiever.js'); // Never Have I Ever command
 const Joke = require('./joke.js'); //Jokes Command
 const Welcome = require('./welcome.js'); // Welcome Messages
+const Conversation = require('./conversation.js'); // Artoo Conversations
+const Maths = require('./math.js');
 const Links = require('./links.js') // Links Command
 const LocalToken = require('./localbot.json');
+const giphyRandom = require("giphy-random");
 
 //const client = new Discord.Client({
 //			ws: { intents: 
@@ -17,7 +20,6 @@ const LocalToken = require('./localbot.json');
 //				] 
 //			}
 //		});
-
 
 const client = new Discord.Client();
 
@@ -37,6 +39,14 @@ const commands = [
 	"!link-suggestion"
 ];
 
+client.mood = 0.5;
+client.moods = [
+	'mad', // 0
+	'sad',	// 0.25
+	'good', // 0.5
+	'happy', // 0.75
+	'excited' // 1
+];
 
 client.on('ready', (response) => {
 	console.log('I am ready! ' + client.user.tag);
@@ -60,6 +70,24 @@ client.on('guildMemberAdd', member =>{
 client.on('message', async message => {
 	const parts = message.content.toLowerCase().split(' ');
 
+	const hasConversableResponse = Conversation.identify(message.content, client);
+	if (hasConversableResponse) {
+		message.channel.startTyping();	
+		setTimeout(() => {
+			message.reply(hasConversableResponse);
+			message.channel.stopTyping();
+		}, (hasConversableResponse.length * 100));
+	}
+
+	const hasMathSolution = Maths.formulate(message.content);
+	if (hasMathSolution) {
+		message.channel.startTyping();	
+		setTimeout(() => {
+			message.reply(hasMathSolution);
+			message.channel.stopTyping();
+		}, (hasMathSolution.length * 100));
+	}
+	
   	if (commands.includes(parts[0])) { // Check that the command is allowed.
 	  	console.log('Command heard!');
 
@@ -111,6 +139,33 @@ client.on('message', async message => {
 		}
 
 		console.log('Command processed.');
+	}
+
+	if (
+		!commands.includes(parts[0])
+		&& !hasConversableResponse
+		&& !hasMathSolution
+	) {
+		if (
+			message.content.toLowerCase().indexOf('artoo') === 0 
+			|| message.content.toLowerCase().indexOf('artoo') === (message.content.length - 5)
+		) { 
+			giphyRandom(
+				'RiiuLenSRb1z6TD5hVHecQ0NYYeqYAoX',
+				{ tag: 'droids' }
+			).then((response) => {
+				if (message.content.toLowerCase().indexOf('gif') !== -1 || message.content.toLowerCase().indexOf('giphy') !== -1) {
+					message.reply('One random gif coming right up!');
+				} else {
+					message.reply('Uhhh.. I\'m not sure what you are asking for.. so here is a random gif instead');
+				}
+				message.channel.startTyping();
+				setTimeout(() => {
+					message.reply(response.data.images.original.url);
+					message.channel.stopTyping();
+				}, 2000);
+			});
+		}
 	}
 });
 
