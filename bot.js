@@ -70,24 +70,6 @@ client.on('guildMemberAdd', member =>{
 client.on('message', async message => {
 	const parts = message.content.toLowerCase().split(' ');
 
-	const hasConversableResponse = Conversation.identify(message.content, client);
-	if (hasConversableResponse) {
-		message.channel.startTyping();	
-		setTimeout(() => {
-			message.reply(hasConversableResponse);
-			message.channel.stopTyping();
-		}, (hasConversableResponse.length * 100));
-	}
-
-	const hasMathSolution = Maths.formulate(message.content);
-	if (hasMathSolution) {
-		message.channel.startTyping();	
-		setTimeout(() => {
-			message.reply(hasMathSolution);
-			message.channel.stopTyping();
-		}, (hasMathSolution.length * 100));
-	}
-	
   	if (commands.includes(parts[0])) { // Check that the command is allowed.
 	  	console.log('Command heard!');
 
@@ -142,14 +124,35 @@ client.on('message', async message => {
 	}
 
 	if (
-		!commands.includes(parts[0])
-		&& !hasConversableResponse
-		&& !hasMathSolution
-	) {
+		message.content.toLowerCase().indexOf('artoo') === 0 
+		|| message.content.toLowerCase().indexOf('artoo') === (message.content.length - 5)
+	) { 
+		// General conversational parsing
+		const hasConversableResponse = Conversation.identify(message.content, client);
+		if (hasConversableResponse) {
+			message.channel.startTyping();	
+			setTimeout(() => {
+				message.reply(hasConversableResponse);
+				message.channel.stopTyping();
+			}, (hasConversableResponse.length * 10));
+		}
+
+		// General mathmatics parsing
+		const hasMathSolution = Maths.formulate(message.content);
+		if (hasMathSolution) {
+			message.channel.startTyping();	
+			setTimeout(() => {
+				message.reply(hasMathSolution);
+				message.channel.stopTyping();
+			}, (hasMathSolution.length * 10));
+		}	
+		
+		// For when asking for random gif OR has no clue what we are asking	
 		if (
-			message.content.toLowerCase().indexOf('artoo') === 0 
-			|| message.content.toLowerCase().indexOf('artoo') === (message.content.length - 5)
-		) { 
+			!commands.includes(parts[0])
+			&& !hasConversableResponse
+			&& !hasMathSolution
+		) {
 			giphyRandom(
 				'RiiuLenSRb1z6TD5hVHecQ0NYYeqYAoX',
 				{ tag: 'droids' }
