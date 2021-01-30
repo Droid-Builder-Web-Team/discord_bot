@@ -4,7 +4,12 @@ const fs = require('fs');
 var roles = [];
 
 // Read in CSV file, as defined by the ROLE_LIST environment variable
-fs.createReadStream(process.env.ROLE_LIST + '.csv')
+
+fs.createReadStream(
+    (process.argv.indexOf('--local') !== -1) 
+        ? 'droidbuilders.csv'
+        : `${process.env.ROLE_LIST}.csv`
+  )
   .pipe(csv())
   .on('data', (row) => {
     roles.push(row); // Add to roles array
