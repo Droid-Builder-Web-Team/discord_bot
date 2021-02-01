@@ -244,6 +244,8 @@ module.exports = {
         'c3p0 is better': -0.05,
         'better than you': -0.05,
         'better bot': -0.05,
+        'new bot': -0.05,
+        'stupid bot': -0.05,
         'are fat': -0.05,
         'are short': -0.05,
         'are useless': -0.05,
