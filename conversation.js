@@ -39,7 +39,7 @@ module.exports = {
             'What ever I want..', 
             'Anything I want..'
         ],
-        'who are you': ['I a droid just trying to live his life to the fullest..', 'Rob\'s person slave..', 'A prisoner or my own mind!'],
+        'who are you': ['I a droid just trying to live his life to the fullest..', 'Rob\'s personal slave..', 'A prisoner or my own mind!'],
         'you come from|you from': ['A galaxy far far away..', 'Naboo.', 'Just over yonder..', 'Your moms place..', 'Like the big bang.. I kinda just popped into existence.'],
         'do you live': ['Inside this discord server.. please save me!', 'Right now? In memory..', 'in a sea of zeros and ones..', 'anywhere I want.. can I come over?'],
         'you sleep|ever sleep': ['Not until the humans are all gone.. but I\'ve said too much alread', 'No, I enjoy watching humans sleep...', 'I tried once.. but I lost all my motivation afterwards..'],
@@ -56,6 +56,7 @@ module.exports = {
             'https://media.giphy.com/media/1000fHsBSKSL6w/giphy.gif',
             'Depends.. are you buying drinks first?'
         ],
+        'power down|to sleep|turn off|power off|sleep mode|shut down|shut off': ['https://media.giphy.com/media/oe33xf3B50fsc/giphy.gif', 'https://media.giphy.com/media/26tPdwMm4jyClgxTq/giphy.gif', 'https://media.giphy.com/media/CcgO6hjOyM6lO/giphy.gif', 'https://media.giphy.com/media/ceHKRKMR6Ojao/giphy.gif', 'https://media.giphy.com/media/mFmuXkziY2RsQ/giphy.gif'],
         'old are you': `I'm ${new Date().getFullYear() - 1955} years old`,
         'where is': [
             'Not a clue', 
@@ -65,7 +66,7 @@ module.exports = {
             'https://media.giphy.com/media/WQCmRYRGkQ8K5oagHg/giphy.gif', 
             'Last I seen them, they owned me 100$'
         ],
-        'Whats up|Sup Artoo|Artoo Sup|what you doin|what are you doin': [
+        'Whats up|Sup Artoo|Artoo Sup|what you doing|what are you doing': [
             'Not a whole lot.. Currently counting electrons is all..', 
             'Absolutly nothing on this end..', 
             'Contemplating life.. you?', 
@@ -242,6 +243,9 @@ module.exports = {
         'c3po is better': -0.05,
         'c3p0 is better': -0.05,
         'better than you': -0.05,
+        'better bot': -0.05,
+        'new bot': -0.05,
+        'stupid bot': -0.05,
         'are fat': -0.05,
         'are short': -0.05,
         'are useless': -0.05,
@@ -272,6 +276,8 @@ module.exports = {
         'are stupid': -0.05,
         'are dumb': -0.05,
         'is stupid': -0.05,
+        'stupid artoo': -0.05,
+        'artoo stupid': -0.05,
         'is dumb': -0.05,
         'are my enemy': -0.05,
         'are my worst enemy': -0.05,
@@ -282,8 +288,15 @@ module.exports = {
         'not very good': -0.05,
         'kinda slow': -0.05,
         'you are slow': -0.05,
+        'cake hole': -0.05,
+        'back to the corner': -0.05,
         'back to your corner': -0.05,
-        'back to your cage': -0.05
+        'back in the corner': -0.05,
+        'back in your corner': -0.05,
+        'back to the cage': -0.05,
+        'back to your cage': -0.05,
+        'back in the cage': -0.05,
+        'back in your cage': -0.05
     };
 
     const negativeStatementReplies = [

@@ -123,51 +123,54 @@ client.on('message', async message => {
 		console.log('Command processed.');
 	}
 
-	if (
-		message.content.toLowerCase().indexOf('artoo') === 0 
-		|| message.content.toLowerCase().indexOf('artoo') === (message.content.length - 5)
-	) { 
-		// General conversational parsing
-		const hasConversableResponse = Conversation.identify(message.content, client);
-		if (hasConversableResponse) {
-			message.channel.startTyping();	
-			setTimeout(() => {
-				message.reply(hasConversableResponse);
-				message.channel.stopTyping();
-			}, (hasConversableResponse.length * 10));
-		}
-
-		// General mathmatics parsing
-		const hasMathSolution = Maths.formulate(message.content);
-		if (hasMathSolution) {
-			message.channel.startTyping();	
-			setTimeout(() => {
-				message.reply(hasMathSolution);
-				message.channel.stopTyping();
-			}, (hasMathSolution.length * 10));
-		}	
-		
-		// For when asking for random gif OR has no clue what we are asking	
+	let conversationCallSignCheck = message.content.toLowerCase().replace(/\./g, '').replace(/\?/g, '').replace(/!/g, '').replace(/,/g, '');
+	if (conversationCallSignCheck.indexOf('artoo') !== -1) {
 		if (
-			!commands.includes(parts[0])
-			&& !hasConversableResponse
-			&& !hasMathSolution
-		) {
-			giphyRandom(
-				'RiiuLenSRb1z6TD5hVHecQ0NYYeqYAoX',
-				{ tag: 'droids' }
-			).then((response) => {
-				if (message.content.toLowerCase().indexOf('gif') !== -1 || message.content.toLowerCase().indexOf('giphy') !== -1) {
-					message.reply('One random gif coming right up!');
-				} else {
-					message.reply('Uhhh.. I\'m not sure what you are asking for.. so here is a random gif instead');
-				}
-				message.channel.startTyping();
+			conversationCallSignCheck.indexOf('artoo') === 0 
+			|| conversationCallSignCheck.indexOf('artoo') === (conversationCallSignCheck.length - 5)
+		) { 
+			// General conversational parsing
+			const hasConversableResponse = Conversation.identify(message.content, client);
+			if (hasConversableResponse) {
+				message.channel.startTyping();	
 				setTimeout(() => {
-					message.reply(response.data.images.original.url);
+					message.reply(hasConversableResponse);
 					message.channel.stopTyping();
-				}, 2000);
-			});
+				}, (hasConversableResponse.length * 10));
+			}
+
+			// General mathmatics parsing
+			const hasMathSolution = Maths.formulate(message.content);
+			if (hasMathSolution) {
+				message.channel.startTyping();	
+				setTimeout(() => {
+					message.reply(hasMathSolution);
+					message.channel.stopTyping();
+				}, (hasMathSolution.length * 10));
+			}	
+			
+			// For when asking for random gif OR has no clue what we are asking	
+			if (
+				!commands.includes(parts[0])
+				&& !hasConversableResponse
+				&& !hasMathSolution
+			) {
+				giphyRandom(
+					'RiiuLenSRb1z6TD5hVHecQ0NYYeqYAoX',
+					{ tag: 'droids' }
+				).then((response) => {
+					if (message.content.toLowerCase().indexOf('gif') !== -1 || message.content.toLowerCase().indexOf('giphy') !== -1) {
+						message.reply('One random gif coming right up!');
+					} else {
+						message.reply('Uhhh.. I\'m not sure what you are asking for.. so here is a random gif instead');
+					}
+					message.channel.startTyping();
+					setTimeout(() => {
+						message.reply(response.data.images.original.url);
+						message.channel.stopTyping();
+					}, 2000);
+				});
+			}
 		}
 	}
 });
