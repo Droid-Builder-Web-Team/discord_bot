@@ -60,9 +60,9 @@ client.on('ready', (response) => {
 
 client.on('guildMemberAdd', member =>{
 	console.log('Member joined....');
-        client.channels.fetch(greet_channel_id)
-                .then(channel => channel.send(Welcome.generateWelcome().replace('MEMBER_NAME', member.user)))
-                .catch(console.error);
+    client.channels.fetch(greet_channel_id)
+        .then(channel => channel.send(Welcome.generateWelcome().replace('MEMBER_NAME', member.user)))
+        .catch(console.error);
 
 });
 
@@ -162,13 +162,23 @@ client.on('message', async message => {
 					if (message.content.toLowerCase().indexOf('gif') !== -1 || message.content.toLowerCase().indexOf('giphy') !== -1) {
 						message.reply('One random gif coming right up!');
 					} else {
-						message.reply('Uhhh.. I\'m not sure what you are asking for.. so here is a random gif instead');
+						const unknownResponses = [
+							`Uhhh.. I\'m not sure what you are asking for.. so here is a random gif instead ${response.data.images.original.url}`,
+							'I would.. if I had any idea what you are saying...',
+							'Huh? I\'m so confused right now',
+							'I have no idea what you are asking of me.',
+							'Nope, wrong command.. Keep trying though!',
+							'<Unknown Command>. I\'m sure you will get it soon!',
+							'You talking to me?',
+							'No....? Wait, YES!?\n\r HELP I NEED AN ADULT!',
+							'Least buy me a drink first...',
+							'Typical hooman.. know not what they ask for...',
+							'Confusion he is.. Understanding he is not..',
+							'Uhhh.. Yes?! wait.. NO!.. ok I have no idea what you are asking to be honest..',
+							'Sure.. Reciting the entire English Dictionary starting from *A*!\n\r Just kidding.. I have no idea what you are asking.'
+						];
+						message.reply(unknownResponses[Math.floor(Math.random() * unknownResponses.length)]);
 					}
-					message.channel.startTyping();
-					setTimeout(() => {
-						message.reply(response.data.images.original.url);
-						message.channel.stopTyping();
-					}, 2000);
 				});
 			}
 		}

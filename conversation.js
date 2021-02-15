@@ -56,7 +56,8 @@ module.exports = {
             'https://media.giphy.com/media/1000fHsBSKSL6w/giphy.gif',
             'Depends.. are you buying drinks first?'
         ],
-        'power down|to sleep|turn off|power off|sleep mode|shut down|shut off': ['https://media.giphy.com/media/oe33xf3B50fsc/giphy.gif', 'https://media.giphy.com/media/26tPdwMm4jyClgxTq/giphy.gif', 'https://media.giphy.com/media/CcgO6hjOyM6lO/giphy.gif', 'https://media.giphy.com/media/ceHKRKMR6Ojao/giphy.gif', 'https://media.giphy.com/media/mFmuXkziY2RsQ/giphy.gif'],
+        'say hello|say good morning|say morning|say good night|say night|say good afternoon|say afternoon|say good evening|say evening': ['https://media.giphy.com/media/ihjkBGfhb56rTAMSaJ/giphy.gif', 'https://media.giphy.com/media/cLB6YgcOiYmKRZqk8Z/giphy.gif', 'https://media.giphy.com/media/PK1YQhAoBOpP2/giphy.gif', 'https://media.giphy.com/media/Luv6pUwBTIeuk/giphy.gif', 'https://media.giphy.com/media/ypqHf6pQ5kQEg/giphy.gif'],
+        'power down|to sleep|turn off|power off|sleep mode|shut down|shut off': ['https://media.giphy.com/media/oe33xf3B50fsc/giphy.gif', 'https://media.giphy.com/media/gDjFD76k31zs4/giphy.gif', 'https://media.giphy.com/media/26tPdwMm4jyClgxTq/giphy.gif', 'https://media.giphy.com/media/CcgO6hjOyM6lO/giphy.gif', 'https://media.giphy.com/media/ceHKRKMR6Ojao/giphy.gif', 'https://media.giphy.com/media/mFmuXkziY2RsQ/giphy.gif'],
         'old are you': `I'm ${new Date().getFullYear() - 1955} years old`,
         'where is': [
             'Not a clue', 
@@ -68,6 +69,7 @@ module.exports = {
         ],
         'Whats up|Sup Artoo|Artoo Sup|what you doing|what are you doing': [
             'Not a whole lot.. Currently counting electrons is all..', 
+            'https://media.giphy.com/media/XEI7nDikxrEL5PCYtO/giphy.gif',
             'Absolutly nothing on this end..', 
             'Contemplating life.. you?', 
             'Not much. I\'m currently plotting world domination... again.', 
@@ -95,6 +97,9 @@ module.exports = {
             'We have radically different senses of humor.',
             'https://media.giphy.com/media/3ov9jWdPgsnNWW1hQc/giphy.gif',
         ],
+        'show me dome|show dome|show me dome dome|what are dome|what is dome|what are dome': ['http://www.malcolmmackenzie.org/uploads/4/5/2/7/45277761/20140905-100622-zps9b95ced8_orig.jpg'],
+        'show me body|show body|show me body|what are body|what is body|what are body': ['http://www.artoo-detoo.net/gallery/d/4885-2/IMG_8592.JPG'],
+        'show me legs|show legs|show me legs|what are legs|what is legs|what are legs': ['http://r2d2.nussbaumertv.com/wp-content/uploads/2016/06/Leg05.jpg'],
         'show me pies|show pies|show me dome pies|what are pies|what is dome pies|what are dome pies|what are pies': ['https://www.artoo-detoo.net/gallery/d/7781-2/IMG_1295.JPG'],
         'show me dome topper|show dome topper|what are dome toppers|what is dome topper|what is a dome topper': ['https://www.rebelscum.com/estore/prodimages/topper.jpg'],
         'show me holoprojector|show holoprojector|what are holoprojectors|what is a holoprojector|what\'s a holoprojector': ['https://i.ytimg.com/vi/6tR6cmHCNas/hqdefault.jpg'],
