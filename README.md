@@ -18,28 +18,28 @@ Basic commands are:
 * !links
 * !link-suggestion
 
-##!help
+## !help
 This will give you a list of avaible commands in discord if you need to see this list in context of the chat.
 
-##!role
+## !role
 This will define your builder role, or rather what builds you are currently doing.
 
-##!ping
+## !ping
 This is a simple debug command to ensure Artoo is alive and well.
 
-##!quote
+## !quote
 This will return a random Star Wars movie quote to the given channel you are under.
 
-##!neverhaveiever
+## !neverhaveiever
 This will return a random "never have i" quote from Artoo in the given channel you are under.
 
-##!weather
+## !weather
 This will return a random weather report in the given channel you are under.
 
-##!joke
+## !joke
 This will return a random joke to the given channel you are under.
 
-##!links
+## !links
 This will return a list of all, or specificly requested list in the given channel you are under.
 Available link list categories are (| denotes more than one way to request a list):
 * !links r2|r2d2|r-series|r series
@@ -61,10 +61,10 @@ Available link list categories are (| denotes more than one way to request a lis
 * !links groups|general|builders|generic
 
 
-##Artoo call sign
+## Artoo call sign
 When talking directly to artoo you will only get him to respond if you have used the `artoo` call sign at the begining or end of your sentence.
 
-##Moods
+## Moods
 Artoo has a set of moods that are weight to his conversational interactions.
 * mad
 * sad
@@ -91,7 +91,7 @@ You can get a report of Artoo's current moods by using the following "status hoo
 * Status please
 * Status report
 
-##Positive Conversation Hooks
+## Positive Conversation Hooks
 These hooks used in conjunction with artoo's call sign will increase his mood: 
 
 * Artoo thanks
@@ -156,7 +156,7 @@ These hooks used in conjunction with artoo's call sign will increase his mood:
 * be your friend
 
 
-##Negative Conversation Hooks
+## Negative Conversation Hooks
 These hooks used in conjunction with artoo's call sign will decrease his mood:
 
 * Artoo sucks
@@ -229,7 +229,7 @@ These hooks used in conjunction with artoo's call sign will decrease his mood:
 * back in your cage
 
 
-##Hello Conversation Hooks
+## Hello Conversation Hooks
 These hooks used in conjunction with artoo's call sign will trigger a hello response:
 * Artoo Hi
 * Hello Artoo
@@ -244,7 +244,7 @@ These hooks used in conjunction with artoo's call sign will trigger a hello resp
 * Evening Artoo
 
 
-##Goodbye Conversation Hooks
+## Goodbye Conversation Hooks
 These hooks used in conjunction with artoo's call sign will trigger a goodbye response:
 
 * Cheers artoo
@@ -270,7 +270,7 @@ These hooks used in conjunction with artoo's call sign will trigger a goodbye re
 * Artoo Goodnight
 * Artoo night
 
-##General Question Hooks
+## General Question Hooks
 These hooks used in conjunction with artoo's call sign and will trigger a response to your question:
 * can you do|else you can do
 * who are you
@@ -289,13 +289,13 @@ These hooks used in conjunction with artoo's call sign and will trigger a respon
 * whats new
 * anything new
 
-##General Statement Hooks
+## General Statement Hooks
 These hooks used in conjunction with artoo's call sign will trigger a response to your statement:
 * it was a joke|take a joke|was only a joke
 * say hello|say good morning|say morning|say good night|say night|say good afternoon|say afternoon|say good evening|say evening
 * power down|to sleep|turn off|power off|sleep mode|shut down|shut off
 
-##Part Request Hooks
+## Part Request Hooks
 These hooks used in conjunction with artoo's call sign will trigger a screenshot response to your requested part:
 
 * show me dome | show dome | show me dome dome | what are dome | what is dome | what are dome
@@ -358,7 +358,7 @@ These hooks used in conjunction with artoo's call sign will trigger a screenshot
 * show me knurled fittings | show knurled fittings | what is knurled fittings | what are knurled fittings | what\'s knurled fittings'        
 * show me utility arm | show utility arm | what is utility arm | what are utility arm | what\'s utility arm'
 
-##Conversion maths
+## Conversion maths
 Artoo can convert differnt units of measurement such as mm to inches. Here is a list of all different avaialble units of measurement artoo can convert:
 
 ```
