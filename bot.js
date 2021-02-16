@@ -5,8 +5,11 @@ const Weather = require('./weather.js'); // Weather command
 const Never = require('./neverhaveiever.js'); // Never Have I Ever command
 const Joke = require('./joke.js'); //Jokes Command
 const Welcome = require('./welcome.js'); // Welcome Messages
+const Conversation = require('./conversation.js'); // Artoo Conversations
+const Maths = require('./math.js');
 const Links = require('./links.js') // Links Command
 const LocalToken = require('./localbot.json');
+const giphyRandom = require("giphy-random");
 
 //const client = new Discord.Client({
 //			ws: { intents: 
@@ -17,7 +20,6 @@ const LocalToken = require('./localbot.json');
 //				] 
 //			}
 //		});
-
 
 const client = new Discord.Client();
 
@@ -37,6 +39,14 @@ const commands = [
 	"!link-suggestion"
 ];
 
+client.mood = 0.5;
+client.moods = [
+	'mad', // 0
+	'sad',	// 0.25
+	'good', // 0.5
+	'happy', // 0.75
+	'excited' // 1
+];
 
 client.on('ready', (response) => {
 	console.log('I am ready! ' + client.user.tag);
@@ -50,9 +60,9 @@ client.on('ready', (response) => {
 
 client.on('guildMemberAdd', member =>{
 	console.log('Member joined....');
-        client.channels.fetch(greet_channel_id)
-                .then(channel => channel.send(Welcome.generateWelcome().replace('MEMBER_NAME', member.user)))
-                .catch(console.error);
+    client.channels.fetch(greet_channel_id)
+        .then(channel => channel.send(Welcome.generateWelcome().replace('MEMBER_NAME', member.user)))
+        .catch(console.error);
 
 });
 
@@ -111,6 +121,67 @@ client.on('message', async message => {
 		}
 
 		console.log('Command processed.');
+	}
+
+	let conversationCallSignCheck = message.content.toLowerCase().replace(/\./g, '').replace(/\?/g, '').replace(/!/g, '').replace(/,/g, '');
+	if (conversationCallSignCheck.indexOf('artoo') !== -1) {
+		if (
+			conversationCallSignCheck.indexOf('artoo') === 0 
+			|| conversationCallSignCheck.indexOf('artoo') === (conversationCallSignCheck.length - 5)
+		) { 
+			// General conversational parsing
+			const hasConversableResponse = Conversation.identify(message.content, client);
+			if (hasConversableResponse) {
+				message.channel.startTyping();	
+				setTimeout(() => {
+					message.reply(hasConversableResponse);
+					message.channel.stopTyping();
+				}, (hasConversableResponse.length * 10));
+			}
+
+			// General mathmatics parsing
+			const hasMathSolution = Maths.formulate(message.content);
+			if (hasMathSolution) {
+				message.channel.startTyping();	
+				setTimeout(() => {
+					message.reply(hasMathSolution);
+					message.channel.stopTyping();
+				}, (hasMathSolution.length * 10));
+			}	
+			
+			// For when asking for random gif OR has no clue what we are asking	
+			if (
+				!commands.includes(parts[0])
+				&& !hasConversableResponse
+				&& !hasMathSolution
+			) {
+				giphyRandom(
+					'RiiuLenSRb1z6TD5hVHecQ0NYYeqYAoX',
+					{ tag: 'droids' }
+				).then((response) => {
+					if (message.content.toLowerCase().indexOf('gif') !== -1 || message.content.toLowerCase().indexOf('giphy') !== -1) {
+						message.reply('One random gif coming right up!');
+					} else {
+						const unknownResponses = [
+							`Uhhh.. I\'m not sure what you are asking for.. so here is a random gif instead ${response.data.images.original.url}`,
+							'I would.. if I had any idea what you are saying...',
+							'Huh? I\'m so confused right now',
+							'I have no idea what you are asking of me.',
+							'Nope, wrong command.. Keep trying though!',
+							'<Unknown Command>. I\'m sure you will get it soon!',
+							'You talking to me?',
+							'No....? Wait, YES!?\n\r HELP I NEED AN ADULT!',
+							'Least buy me a drink first...',
+							'Typical hooman.. know not what they ask for...',
+							'Confusion he is.. Understanding he is not..',
+							'Uhhh.. Yes?! wait.. NO!.. ok I have no idea what you are asking to be honest..',
+							'Sure.. Reciting the entire English Dictionary starting from *A*!\n\r Just kidding.. I have no idea what you are asking.'
+						];
+						message.reply(unknownResponses[Math.floor(Math.random() * unknownResponses.length)]);
+					}
+				});
+			}
+		}
 	}
 });
 
