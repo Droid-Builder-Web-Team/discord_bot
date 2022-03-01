@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 const categories = {
-    'r2|r2d2|r-series|r series|openr2|open r2|astromech|astromech.net|astromech spain| spanish astromech|': [
+    'r2|r2d2|r-series|r series|openr2|open r2|astromech|astromech.net|astromech spain| spanish astromech|australian astromech|australian r2': [
         '<https://www.facebook.com/groups/114873821868779> - UK R2 Builders Facebook',
         '<https://www.facebook.com/astromechspain> - Astromech Spain Facebook',
         '<https://www.facebook.com/groups/openr2/> - OpenR2 Facebook',
@@ -12,7 +12,7 @@ const categories = {
     'a-lt': [
         '<https://www.facebook.com/groups/altbuilders> - A-LT Builders'
     ],
-    't3|t-series|t series': [
+    't3|t-series|t series|t3-m4| t3 m4': [
         '<https://www.facebook.com/groups/t3droidbuildersgroup> - T3 Builders'
     ],
     'bd1|bd-series|bd series': [
@@ -31,7 +31,7 @@ const categories = {
         '<https://bb8builders.club/forum/> - BB8 Builders Forum',
         '<https://www.facebook.com/groups/BB8BuildersClub> - BB8 Builders'
     ],
-    'fx-7': [
+    'fx-7|medical droid': [
         '<https://www.facebook.com/groups/569516146941615> - FX-7 Builders'
     ],
     'pit|pit droid': [
@@ -49,7 +49,7 @@ const categories = {
     'gonk': [
         '<https://www.facebook.com/groups/413080335552627> - Gonk Droid Builders'
     ],
-    'd-o': [
+    'd-o|do': [
         '<https://www.facebook.com/groups/2468594199841880> - D-O Builders'
     ],
     'rx-23|pilot|rex': [

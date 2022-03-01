@@ -47,8 +47,8 @@ client.moods = [
 ];
 
 client.on('ready', (response) => {
-	console.log('I am ready! ' + client.user.tag);
-	console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
+	// console.log('I am ready! ' + client.user.tag);
+	// console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
 	client.user.setActivity('Ask me for !help');
 //	client.channels.fetch(admin_channel_id)
 //		.then(channel => channel.send('Beep Boop'))
@@ -57,7 +57,7 @@ client.on('ready', (response) => {
 });
 
 client.on('guildMemberAdd', member =>{
-	console.log('Member joined....');
+	// console.log('Member joined....');
     client.channels.fetch(greet_channel_id)
         .then(channel => channel.send(Welcome.generateWelcome().replace('MEMBER_NAME', member.user)))
         .catch(console.error);
@@ -69,7 +69,7 @@ client.on('message', async message => {
 	const parts = message.content.toLowerCase().split(' ');
 
   	if (commands.includes(parts[0])) { // Check that the command is allowed.
-	  	console.log('Command heard!');
+	  	// console.log('Command heard!');
 
 		if (parts[0] == '!role' && message.member != null) { //Need to check the message has a member, otherwise crash!
 			Roles.grantRole(parts[1], message);
@@ -77,10 +77,6 @@ client.on('message', async message => {
 
 		if (parts[0] === '!quote') {
 			message.reply(Quotes.generateQuote());
-		}
-
-		if (parts[0] === '!weather') {
-			message.reply(Weather.generateWeather());
 		}
 
 		if (parts[0] === '!ping') {
@@ -104,7 +100,7 @@ client.on('message', async message => {
 				message.reply('To suggest a link be added, please use `!link-suggestion URL | CATEGORY | DESCRIPTION`');
 			} else {
 				Links.makeSuggestion(message);
-				message.reply('Thank you! I have captured this link and humans will review shortly!');
+				message.reply('Thank you! I have captured this link and humans will review it shortly!');
 				// TODO - Send this suggestion to admin/ moderator chat
 			}
 		}
@@ -119,7 +115,7 @@ client.on('message', async message => {
 			message.reply(output);
 		}
 
-		console.log('Command processed.');
+		// console.log('Command processed.');
 	}
 
 	let conversationCallSignCheck = message.content.toLowerCase().replace(/\./g, '').replace(/\?/g, '').replace(/!/g, '').replace(/,/g, '');
