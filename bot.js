@@ -1,7 +1,6 @@
 const Discord = require('discord.js'); // Main discord API library
 const Quotes = require('./quotes.js'); // Quotes command
 const Roles = require('./roles.js'); // Roles command
-const Weather = require('./weather.js'); // Weather command
 const Never = require('./neverhaveiever.js'); // Never Have I Ever command
 const Joke = require('./joke.js'); //Jokes Command
 const Welcome = require('./welcome.js'); // Welcome Messages
@@ -33,10 +32,9 @@ const commands = [
 	"!ping",
 	"!quote",
 	"!neverhaveiever",
-	"!weather",
 	"!joke",
 	"!links",
-	"!link-suggestion"
+	"!link-suggestion",
 ];
 
 client.mood = 0.5;
@@ -106,7 +104,8 @@ client.on('message', async message => {
 				message.reply('To suggest a link be added, please use `!link-suggestion URL | CATEGORY | DESCRIPTION`');
 			} else {
 				Links.makeSuggestion(message);
-				message.reply('Thank you! I have captured this link and will humans review shortly!');
+				message.reply('Thank you! I have captured this link and humans will review shortly!');
+				// TODO - Send this suggestion to admin/ moderator chat
 			}
 		}
 
@@ -163,6 +162,8 @@ client.on('message', async message => {
 						message.reply('One random gif coming right up!');
 					} else {
 						const unknownResponses = [
+							`So, I\'ve probably not been programmed to understand what you\'ve just said...ask Rob?`,
+							`What? Darn, where is a translator droid when you need one...`,
 							`Uhhh.. I\'m not sure what you are asking for.. so here is a random gif instead ${response.data.images.original.url}`,
 							'I would.. if I had any idea what you are saying...',
 							'Huh? I\'m so confused right now',

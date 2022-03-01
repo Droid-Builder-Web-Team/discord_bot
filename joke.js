@@ -30,6 +30,16 @@ var jokeArray = [
     "What do you need to reroute droids?\n R2-Detour.",
     "What did Han Solo say to the waiter who recommended the haddock?\n Never sell me the cods!",
     "Which Jedi became a rock star?\n Bon Jovi-Wan Kenobi",
+    "Why can\'t you count on Yoda to pick up a bar tab?\n He\'s always a little short.",
+    "Which Star Wars character travels around the world?\n Globi-wan Kenobi.",
+    "What kind of car does a Jedi drive?\n A Toy-Yoda.",
+    "Where is the best place to shop for lightsabers?\n The Darth Maul",
+    "Why does Princess Leia keep her hair tied up in buns?\n So it doesn\'t Hang So-low.",
+    "Why do Doctors make the best Jedi?\n Jedi must have patience.",
+    "What is Jabba the Hutt\'s middle name? \nThe.",
+    "What do you call Chewbacca when he chocolate stuck in his fir?\n A chocolate chip Wookie.",
+    "What do you call a nervous Jedi?\n Panicking Skywalker.",
+    "What does Kylo Ren serve at a dinner party?\n First hors d\'oeuvres."
   ];
   var textArray = [
     "Here's a joke, ",

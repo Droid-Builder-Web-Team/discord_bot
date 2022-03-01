@@ -1,10 +1,12 @@
 const fs = require('fs');
 
 const categories = {
-    'r2|r2d2|r-series|r series': [
-        '<http://www.astromech.net/> - Online Droid Building Forums',
+    'r2|r2d2|r-series|r series|openr2|open r2|astromech|astromech.net|astromech spain| spanish astromech|': [
+        '<https://www.facebook.com/groups/114873821868779> - UK R2 Builders Facebook',
+        '<https://www.facebook.com/astromechspain> - Astromech Spain Facebook',
+        '<https://www.facebook.com/groups/openr2/> - OpenR2 Facebook',
+        '<https://www.astromech.net/> - Astromech.net Forum',
         '<https://www.facebook.com/groups/R2.builders> - R2 Builders Group',
-        '<https://www.facebook.com/astromech.net> - Astromech.net Facebook Page are the main ones.',
     ],
     'a-lt': [
         '<https://www.facebook.com/groups/altbuilders> - A-LT Builders'
@@ -25,6 +27,7 @@ const categories = {
         '<https://www.facebook.com/groups/503363040384828> - Imperial Probe Droid Builders'
     ],
     'bb8|bb-series|bb series': [
+        '<https://bb8builders.club/forum/> - BB8 Builders Forum',
         '<https://www.facebook.com/groups/BB8BuildersClub> - BB8 Builders'
     ],
     'fx-7': [
@@ -52,12 +55,17 @@ const categories = {
         '<https://www.facebook.com/groups/616292118832957> - Captain Rex RX-23 Pilot Droid Builders'
     ],
     'groups|general|builders|generic': [
-        '<https://www.facebook.com/groups/UKR2D2Builders/> - UK R2 Builders',
         '<https://www.facebook.com/groups/droidbuildersuk/> - Droid Builders UK',
         '<https://www.facebook.com/groups/MrBaddeley/> - Mr Baddeley\'s Printed Droids',
         '<https://www.facebook.com/groups/healthsupportfordroidbuilders> - Health Support for Droid Builders',
-        '<https://www.facebook.com/groups/openr2/> - OpenR2',
-        '<https://www.facebook.com/groups/161260285386282> - High Republic Droid Builders'
+        '<https://www.facebook.com/groups/161260285386282> - High Republic Droid Builders',
+        '<http://rebeldroids.net/forum/> - Rebel Droids'
+    ],
+    'guides|robs-robots|new builder guide|electronics guide|control system guide': [
+        '<https://robsrobots.co.uk/guides.php> - Rob\s Robots Guides'
+    ],
+    'portal|dbuk portal| uk portal': [
+        '<https://portal.droidbuilders.uk> - Droid Builders UK Portal'
     ]
 };
 
