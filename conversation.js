@@ -155,7 +155,8 @@ module.exports = {
         'show me half-moon|show half-moon|what is half-moon|what are half-moon|what\'s half-moon': ['http://www.r2-d2builder.com/graphics/r2d2/r2feet/halfmoonsouter.jpg'], 
         'show me outer strip|show outer strip|what is outer strip|what are outer strip|what\'s outer strip': ['http://www.r2-d2builder.com/graphics/r2d2/r2feet/outerfootstrips.jpg'], 
         'show me knurled fittings|show knurled fittings|what is knurled fittings|what are knurled fittings|what\'s knurled fittings': ['http://www.r2-d2builder.com/graphics/r2d2/r2feet/hoseknf.jpg'],         
-        'show me utility arm|show utility arm|what is utility arm|what are utility arm|what\'s utility arm': ['http://www.r2-d2builder.com/graphics/r2d2/r2body/utilityarms1.jpg']
+        'show me utility arm|show utility arm|what is utility arm|what are utility arm|what\'s utility arm': ['http://www.r2-d2builder.com/graphics/r2d2/r2body/utilityarms1.jpg'],
+        'show me t3|show t3|what is a t3': ['What\'s a T3?']
     };
 
     // Mood Status
