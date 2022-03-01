@@ -63,9 +63,9 @@ const categories = {
         '<http://rebeldroids.net/forum/> - Rebel Droids'
     ],
     'guides|robs-robots|new builder guide|electronics guide|control system guide': [
-        '<https://robsrobots.co.uk/guides.php> - Rob\s Robots Guides'
+        '<https://robsrobots.co.uk/guides.php> - Rob\'s Robots Guides'
     ],
-    'portal|dbuk portal| uk portal': [
+    'portal|dbuk portal|uk portal': [
         '<https://portal.droidbuilders.uk> - Droid Builders UK Portal'
     ]
 };
@@ -77,6 +77,10 @@ module.exports =  {
         if (!category || category === 'all') {
             return Object.keys(categories).map((i) => categories[i].join('\n')).join('\n');
         }
+
+        // if (category == '') {
+        //     category === 'all';
+        // }
 
         Object.keys(categories).map((i) => {
             const terms = i.split('|');
