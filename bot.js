@@ -50,9 +50,9 @@ client.on('ready', (response) => {
 	// console.log('I am ready! ' + client.user.tag);
 	// console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
 	client.user.setActivity('Ask me for !help');
-//	client.channels.fetch(admin_channel_id)
-//		.then(channel => channel.send('Beep Boop'))
-//		.catch(console.error);
+	client.channels.fetch(admin_channel_id)
+		.then(channel => channel.send('Beep Boop'))
+		.catch(console.error);
 
 });
 
