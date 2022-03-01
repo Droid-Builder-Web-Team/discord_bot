@@ -5,6 +5,7 @@ const categories = {
         '<https://www.facebook.com/groups/114873821868779> - UK R2 Builders Facebook',
         '<https://www.facebook.com/astromechspain> - Astromech Spain Facebook',
         '<https://www.facebook.com/groups/openr2/> - OpenR2 Facebook',
+        '<https://www.facebook.com/groups/r2australia> - Australian R2 Builders',
         '<https://www.astromech.net/> - Astromech.net Forum',
         '<https://www.facebook.com/groups/R2.builders> - R2 Builders Group',
     ],
