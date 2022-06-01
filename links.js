@@ -85,7 +85,11 @@ module.exports = {
     }
 
     if (category === "categories") {
-      return "Working on this...";
+      Object.keys(categories).map((i) => {
+        const categoryNames = i.split("|");
+
+        return categoryNames.join("\n");
+      });
     }
 
     Object.keys(categories).map((i) => {
