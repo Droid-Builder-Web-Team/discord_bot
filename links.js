@@ -81,7 +81,11 @@ module.exports = {
     let response = ": Sorry, I couln't find anything around that topic.";
 
     if (!category || category === "all") {
-      return Object.entries(coreLinks);
+      return coreLinks;
+    }
+
+    if (category === "categories") {
+      return "Working on this...";
     }
 
     Object.keys(categories).map((i) => {
