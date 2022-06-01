@@ -88,7 +88,7 @@ module.exports = {
       Object.keys(categories).map((i) => {
         const categoryNames = i.split("|");
 
-        return categoryNames.join("\n");
+        return categoryNames;
       });
     }
 
