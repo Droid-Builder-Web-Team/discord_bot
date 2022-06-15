@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-const categories = {
+const links = {
     'r2|r2d2|r-series|r series': [
         '<http://www.astromech.net/> - Online Droid Building Forums',
         '<https://www.facebook.com/groups/R2.builders> - R2 Builders Group',
@@ -61,8 +61,41 @@ const categories = {
     ]
 };
 
+const categories = {
+    'robs-mom': [
+        '<https://www.google.com> - Rob\'s Mom'
+    ],
+    'robs-sister': [
+        '<https://www.yahoo.com> - Rob\'s Sister'
+    ],
+    'robs-dad': [
+        '<https://www.duckduckgo.com> - Rob\'s Dad'
+    ],
+    'robert': [
+        '<https://www.bing.com> - Robert'
+    ]   
+};
+
 module.exports =  {
-    generateLinks: (category) => {
+    generateLinks: (link) => {
+        let response = ': Sorry, I couln\'t find anything around that topic.';
+        
+        if (!link || link === 'all') {
+            return Object.keys(links).map((i) => links[i].join('\n')).join('\n');
+        }
+
+        Object.keys(links).map((i) => {
+            const terms = i.split('|');
+            if (terms.indexOf(link) !== -1) {
+                response = `Here is a list of ${link} related links I could find:\n\r${links[i].join('\n')}`;
+            }
+
+            return false; 
+        });
+
+        return response;
+    },
+    generateCategories: (category) => {
         let response = ': Sorry, I couln\'t find anything around that topic.';
         
         if (!category || category === 'all') {
@@ -72,14 +105,14 @@ module.exports =  {
         Object.keys(categories).map((i) => {
             const terms = i.split('|');
             if (terms.indexOf(category) !== -1) {
-                response = `Here is a list of ${category} related links I could find:\n\r${categories[i].join('\n')}`;
+                response = `Here is a list of categories I could find:\n\r${categories[i].join('\n')}`;
             }
 
             return false; 
         });
 
         return response;
-    },
+    },    
     makeSuggestion: (suggestion) => {
         fs.appendFile(
             (process.argv.indexOf('--local') !== -1) 
