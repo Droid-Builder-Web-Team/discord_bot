@@ -36,6 +36,7 @@ const commands = [
 	"!weather",
 	"!joke",
 	"!links",
+	"!robme",
 	"!categories",
 	"!link-suggestion"
 ];
@@ -100,6 +101,10 @@ client.on('message', async message => {
 
 		if (parts[0] === '!links') {
 			message.reply(Links.generateLinks(parts[1]));
+		}
+
+		if (parts[0] === '!robme') {
+			message.reply(Conversation.robmeRandom());
 		}
 
 		if (parts[0] === '!link-suggestion') {
