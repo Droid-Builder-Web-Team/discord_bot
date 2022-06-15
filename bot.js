@@ -36,6 +36,7 @@ const commands = [
 	"!weather",
 	"!joke",
 	"!links",
+	"!categories",
 	"!link-suggestion"
 ];
 
@@ -108,6 +109,10 @@ client.on('message', async message => {
 				Links.makeSuggestion(message);
 				message.reply('Thank you! I have captured this link and will humans review shortly!');
 			}
+		}
+
+		if (parts[0] === '!categories') {
+			message.reply(Links.generateCategories(parts[1]));
 		}
 
 		if (parts[0] === '!help') {
