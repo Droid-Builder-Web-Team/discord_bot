@@ -8,7 +8,7 @@ const coreLinks = [
   "<https://robsrobots.co.uk/guides.php> - Rob's Robots Guides",
 ];
 
-const categories = {
+const links = {
   "r2|r2d2|r-series|r series|openr2|open r2|astromech|astromech.net|astromech spain| spanish astromech|australian astromech|australian r2":
     [
       "<https://www.facebook.com/groups/114873821868779> - UK R2 Builders Facebook",
@@ -76,31 +76,63 @@ const categories = {
   ],
 };
 
+const categories = {
+    'robs-mom': [
+        '<https://www.google.com> - Rob\'s Mom'
+    ],
+    'robs-sister': [
+        '<https://www.yahoo.com> - Rob\'s Sister'
+    ],
+    'robs-dad': [
+        '<https://www.duckduckgo.com> - Rob\'s Dad'
+    ],
+    'robert': [
+        '<https://www.bing.com> - Robert'
+    ]   
+};
+
 module.exports = {
-  generateLinks: (category) => {
+  generateLinks: (link) => {
     let response = ": Sorry, I couln't find anything around that topic.";
 
-    if (!category || category === "all") {
+    if (!link || link === "all") {
       return coreLinks;
     }
 
-    if (category === "categories") {
-      Object.keys(categories).map((i) => {
-        const categoryNames = i.split("|");
+    if (link === "categories") {
+      Object.keys(links).map((i) => {
 
-        return categoryNames;
+        return i.split("|");
       });
     }
 
-    Object.keys(categories).map((i) => {
+    Object.keys(links).map((i) => {
       const terms = i.split("|");
-      if (terms.indexOf(category) !== -1) {
-        response = `Here is a list of ${category} related links I could find:\n\r${categories[
+      if (terms.indexOf(link) !== -1) {
+        response = `Here is a list of ${link} related links I could find:\n\r${categories[
           i
         ].join("\n")}`;
       }
 
       return false;
+    });
+
+    return response;
+  },
+  generateCategories: (category) => {
+    let response = ': Sorry, I couln\'t find anything around that topic.';
+    
+    if (!category || category === 'all') {
+        return Object.keys(categories).map((i) => categories[i].join('\n')).join('\n');
+    }
+
+    Object.keys(categories).map((i) => {
+        const terms = i.split('|');
+        if (terms.indexOf(category) !== -1) {
+            response = `Here is a list of categories I could find:\n\r${categories[i].join('\n')}`;
+        }
+
+        return false; 
     });
 
     return response;
