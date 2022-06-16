@@ -109,7 +109,7 @@ module.exports = {
     Object.keys(links).map((i) => {
       const terms = i.split("|");
       if (terms.indexOf(link) !== -1) {
-        response = `Here is a list of ${link} related links I could find:\n\r${categories[
+        response = `Here is a list of ${link} related links I could find:\n\r${links[
           i
         ].join("\n")}`;
       }
