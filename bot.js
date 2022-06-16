@@ -34,6 +34,8 @@ const commands = [
   "!neverhaveiever",
   "!joke",
   "!links",
+  "!categories",
+  "!robme",
   "!link-suggestion",
 ];
 
@@ -101,6 +103,10 @@ client.on("message", async (message) => {
       message.reply(Links.generateLinks(parts[1]));
     }
 
+	if (parts[0] === '!robme') {
+		message.reply(Conversation.robmeRandom());
+	}    
+
     if (parts[0] === "!link-suggestion") {
       if (!parts[1] || !parts[2] || !parts[3]) {
         message.reply(
@@ -114,6 +120,10 @@ client.on("message", async (message) => {
         // TODO - Send this suggestion to admin/ moderator chat
       }
     }
+
+	if (parts[0] === '!categories') {
+		message.reply(Links.generateCategories(parts[1]));
+	}    
 
     if (parts[0] === "!help") {
       output = "The following commands are available: \n";

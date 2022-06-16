@@ -534,5 +534,19 @@ module.exports = {
     });
 
     return response;
+  },
+  robmeRandom: () => {
+    const randomRobs = {
+        'angry': 'https://ibin.co/6kn6928Rb7YU.jpg',
+        'business': 'https://ibin.co/6kn6zAqC4X9i.jpg',
+        'emo': 'https://ibin.co/6kn7JT4zibVu.jpg',
+        'senior': 'https://ibin.co/6kn7TlsTgwwA.jpg',
+        'rock': 'https://ibin.co/6kn7jh6x6jDa.jpg',
+        'strange': 'https://ibin.co/6kn7rBgwMC7j.jpg',
+        'zombie': 'https://ibin.co/6kn7yMulJSmM.jpg'
+    };
+
+    const randomRobKey = Object.keys(randomRobs)[Math.floor((Math.random() * 6 | 0) + 1)];
+    return `You have been ${randomRobKey} rob-ed\n\r ![${randomRobKey} rob](${randomRobs[randomRobKey]})`;
   }
 };
