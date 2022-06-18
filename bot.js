@@ -37,6 +37,9 @@ const commands = [
   "!categories",
   "!robme",
   "!link-suggestion",
+  "!whereis",
+  "!whereisartoo",
+  "!canyoufind"
 ];
 
 client.mood = 0.5;
@@ -103,9 +106,13 @@ client.on("message", async (message) => {
       message.reply(Links.generateLinks(parts[1]));
     }
 
-	if (parts[0] === '!robme') {
-		message.reply(Conversation.robmeRandom());
-	}    
+  	if (parts[0] === '!robme') {
+  		message.reply(Conversation.robmeRandom());
+  	}
+
+    if (parts[0] === '!whereis' || parts[0] === '!whereisartoo' || parts[0] === '!canyoufind') {
+      message.reply(Conversation.whereIsArtoo());
+    }  
 
     if (parts[0] === "!link-suggestion") {
       if (!parts[1] || !parts[2] || !parts[3]) {

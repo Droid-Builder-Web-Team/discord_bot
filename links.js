@@ -9,7 +9,7 @@ const coreLinks = [
 ];
 
 const links = {
-  "r2|r2d2|r-series|r series|openr2|open r2|astromech|astromech.net|astromech spain| spanish astromech|australian astromech|australian r2":
+  "r2|r2d2|r-series|r series|openr2|open r2|astromech|astromech.net|astromech spain|spanish astromech|australian astromech|australian r2":
     [
       "<https://www.facebook.com/groups/114873821868779> - UK R2 Builders Facebook",
       "<https://www.facebook.com/astromechspain> - Astromech Spain Facebook",
@@ -77,18 +77,22 @@ const links = {
 };
 
 const categories = {
-    'robs-mom': [
-        '<https://www.google.com> - Rob\'s Mom'
-    ],
-    'robs-sister': [
-        '<https://www.yahoo.com> - Rob\'s Sister'
-    ],
-    'robs-dad': [
-        '<https://www.duckduckgo.com> - Rob\'s Dad'
-    ],
-    'robert': [
-        '<https://www.bing.com> - Robert'
-    ]   
+  "r2": "r2|r2d2|r-series|r series|openr2|open r2|astromech|astromech.net|astromech spain| spanish astromech|australian astromech|australian r2",
+  "a-lt": "a-lt",
+  "t3": "t3|t-series|t series|t3-m4| t3 m4",
+  "bd1": "bd1|bd-series|bd series",
+  "b1": "b1|battle|battle droid",
+  "mouse": "mouse|mouser|mse|mse-series|mse series",
+  "probe": "probe|imperial probe",
+  "bb8": "bb8|bb-series|bb series",
+  "medical": "fx-7|medical droid",
+  "pit": "pit|pit droid",
+  "2-1b": "2-1b|medical droid",
+  "chopper": "chopper|c1-10p",
+  "ig": "ig|ig unit",
+  "gonk": "gonk|gnk",
+  "do": "d-o|do",
+  "rex": "rx-23|pilot|rex" 
 };
 
 module.exports = {
@@ -101,7 +105,6 @@ module.exports = {
 
     if (link === "categories") {
       Object.keys(links).map((i) => {
-
         return i.split("|");
       });
     }
@@ -123,13 +126,13 @@ module.exports = {
     let response = ': Sorry, I couln\'t find anything around that topic.';
     
     if (!category || category === 'all') {
-        return Object.keys(categories).map((i) => categories[i].join('\n')).join('\n');
+        return `\nHere is all the available categories:\n\r${Object.keys(categories).map((i) => [i]).join('\n')}`;
     }
 
     Object.keys(categories).map((i) => {
-        const terms = i.split('|');
+        const terms = i;
         if (terms.indexOf(category) !== -1) {
-            response = `Here is a list of categories I could find:\n\r${categories[i].join('\n')}`;
+            response = `\nHere is a list of "${category}" category items I could find:\n\r${categories[i].split('|').join('\n')}`;
         }
 
         return false; 
