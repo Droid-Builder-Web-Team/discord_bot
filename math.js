@@ -50,7 +50,9 @@ module.exports = {
     // Standardize the questions
     message = message.replace(/what's/g, "convert");
     message = message.replace(/whats/g, "convert");
-    message = message.replace(/what is/g, "convert");
+    if (message.indexOf('what is the') === -1 && message.indexOf('what is you') === -1 ) {
+      message = message.replace(/what is/g, "convert");
+    }
     message = message.replace(/ in /g, " to ");
     message = message.replace(/ into /g, " to ");
 
