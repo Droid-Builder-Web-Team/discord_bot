@@ -548,5 +548,17 @@ module.exports = {
 
     const randomRobKey = Object.keys(randomRobs)[Math.floor((Math.random() * 6 | 0) + 1)];
     return `You have been ${randomRobKey} rob-ed\n\r ![${randomRobKey} rob](${randomRobs[randomRobKey]})`;
-  }
+  },
+  whereIsArtoo: () => {
+    const randomHunts = [
+        'https://ibin.co/6l5IhuJYY5ab.jpg',
+        'https://ibin.co/6l5IQjePvMiP.jpg',
+        'https://ibin.co/6l5IXI9uGysz.jpg',
+        'https://ibin.co/6l5IHMvQrD0L.jpg',
+        'https://ibin.co/6l5IB7m6oQ6r.jpg'
+    ];
+
+    const randomHuntKey = Object.keys(randomHunts)[Math.floor((Math.random() * 4 | 0) + 1)];
+    return `Can you find me?\n\r ${randomHunts[randomHuntKey]}`;
+  }  
 };
