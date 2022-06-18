@@ -1,4 +1,4 @@
-const { Client, MessageEmbed } = require('discord.js');
+const Discord = require("discord.js"); // Main discord API library
 const Quotes = require("./quotes.js"); // Quotes command
 const Roles = require("./roles.js"); // Roles command
 const Never = require("./neverhaveiever.js"); // Never Have I Ever command
@@ -20,7 +20,7 @@ const giphyRandom = require("giphy-random");
 //			}
 //		});
 
-const client = new Client();
+const client = new Discord.Client();
 
 const greet_channel_id = "714247035825422400"; // general-chat Channel
 const admin_channel_id = "715193623129489429"; // Admin Channel
