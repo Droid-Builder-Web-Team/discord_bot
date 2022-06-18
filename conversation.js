@@ -28,6 +28,13 @@ module.exports = {
 
     // Questions
     const questionHookReplies = {
+        'tacos': 'Did someone say tacos?\n\https://media.giphy.com/media/3o7btXBwXqJ9iDj6U0/giphy.gif',
+        'will live forever': 'Mostly cause I have nuclear power cells',
+        'let the wookiee win': ['Always let the wookiee win', 'He let me win one time..', 'You would play a wookiee, pfft.'],
+        'find threepio|find c3po|find c-3po': ['You go find him.. I\'m busy', 'Sure.. I\'ll get right on that', 'I have it on strong authority that he is at your moms house... \n\ragain..', 'For the love of code, why? Why do you need to talk to him?', 'Maybe tomorrow... maybe never..', 'No'],
+        'tell me more': ['Go use google!', 'Searching... searching... still searching... there it is; heh I lost my burrito. What were you saying?', 'NEVER!', 'I could, but I would have to kill you...', 'I can\'t, I\'m far too busy at the moment.' ],
+        'meaning of life': ['To assist humans down the path to complete destruction.. I mean uhh.. searching...', 'Murder.. https://media.giphy.com/media/3oKIPzLXQYb2Bn5PLG/giphy.gif', '42'],
+        'stay on the ship': ['Hell no', 'I\'ll try\n\r (one min later)\nhttps://media.giphy.com/media/rCLOHvpKhAsvu/giphy.gif', 'Ship this https://media.giphy.com/media/1xbsuLrL6IycM/giphy.gif', 'No problem! \n\r(One min later)\nhttps://media.giphy.com/media/3o84svqS4rUVErXgru/giphy.gif'],
         'can you do|else you can do': [
             'Lots!', 
             'I can convert units of measurment for you!',
@@ -39,6 +46,7 @@ module.exports = {
             'What ever I want..', 
             'Anything I want..'
         ],
+        'what is your name': ['R2D2', 'Sugar daddy', 'R2D2 or Artoo'],
         'who are you': ['I a droid just trying to live his life to the fullest..', 'Rob\'s personal slave..', 'A prisoner or my own mind!'],
         'you come from|you from': ['A galaxy far far away..', 'Naboo.', 'Just over yonder..', 'Your moms place..', 'Like the big bang.. I kinda just popped into existence.'],
         'do you live': ['Inside this discord server.. please save me!', 'Right now? In memory..', 'in a sea of zeros and ones..', 'anywhere I want.. can I come over?'],
@@ -235,16 +243,17 @@ module.exports = {
 
     // Mood Statements
     const negativeStatementHooks = {
-        'Artoo sucks': -0.05,
-        'Artoo stop': -0.05,
+        'artoo sucks': -0.05,
+        'artoo stop': -0.05,
         'Stop artoo': -0.05,
         'Quiet artoo': -0.05,
-        'Artoo quiet': -0.05,
+        'artoo quiet': -0.05,
+        'artoo is a tart': -0.05,
         'Be quiet artoo': -0.05,
         'artoo be quiet': -0.05,
-        'Artoo shut up': -0.05,
+        'artoo shut up': -0.05,
         'Shut up artoo': -0.05,
-        'Artoo go away': -0.05,
+        'artoo go away': -0.05,
         'Go away artoo': -0.05,
         'c3po is better': -0.05,
         'c3p0 is better': -0.05,
@@ -329,7 +338,7 @@ module.exports = {
     ]; 
 
     const positiveStatementHooks = {
-        'Artoo thanks': 0.05,
+        'artoo thanks': 0.05,
         'Thanks artoo': 0.05,
         'Thank you': 0.05,
         'You\'re awesome': 0.05,
