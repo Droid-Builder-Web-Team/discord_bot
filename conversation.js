@@ -26,7 +26,7 @@ module.exports = {
 			'Hey! Working on anything interesting?',
 			'Hi builder, how are you today? Anything I can help with?',
 			'Howdy builder, what projects are you working on today?',
-			'Hi builder, have you seen <@Stubbs (oldsfan20/BRYAN!!!)>? He was going to print something for me today.'
+			'Hi builder, have you seen <@9093>? He was going to print something for me today.'
 		];
 
 		// Questions
