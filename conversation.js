@@ -26,12 +26,12 @@ module.exports = {
 			'Hey! Working on anything interesting?',
 			'Hi builder, how are you today? Anything I can help with?',
 			'Howdy builder, what projects are you working on today?',
-			'Hi builder, have you seen @Stubbs? He was going to print something for me today.',
-			'Hi builder! Anything new in the Junkyard today?'
+			'Hi builder, have you seen <@Stubbs (oldsfan20/BRYAN!!!)>? He was going to print something for me today.'
 		];
 
 		// Questions
 		const questionHookReplies = {
+			'I\'m lost': ['have you tried hare krishna?', 'you need an adult.', 'aren\'t we all; just a little inside?'],
 			'tacos': 'Did someone say tacos?\n\https://media.giphy.com/media/3o7btXBwXqJ9iDj6U0/giphy.gif',
 			'will live forever': 'Mostly cause I have nuclear power cells',
 			'let the wookiee win': ['Always let the wookiee win', 'He let me win one time..', 'You would play a wookiee, pfft.'],
