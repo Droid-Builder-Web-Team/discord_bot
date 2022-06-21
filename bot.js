@@ -7,6 +7,7 @@ const Welcome = require("./welcome.js"); // Welcome Messages
 const Conversation = require("./conversation.js"); // Artoo Conversations
 const Maths = require("./math.js");
 const Links = require("./links.js"); // Links Command
+const Battle = require('./battle.js');
 const LocalToken = require("./localbot.json");
 const giphyRandom = require("giphy-random");
 
@@ -39,7 +40,8 @@ const commands = [
   "!link-suggestion",
   "!whereis",
   "!whereisartoo",
-  "!canyoufind"
+  "!canyoufind",
+  "!battle"
 ];
 
 client.mood = 0.5;
@@ -128,9 +130,20 @@ client.on("message", async (message) => {
       }
     }
 
-	if (parts[0] === '!categories') {
-		message.reply(Links.generateCategories(parts[1]));
-	}    
+    if (parts[0] === '!battle') {
+      const players = message.mentions.users.map(mention => mention.username);
+      if (players.length < 1) { return message.reply('Two players are required to start battle.'); }
+      const responses = Battle.fight(players[0], players[1]); 
+      Object.keys(responses).map(i => {
+        setTimeout(() => {
+          message.reply(responses[i]);
+        }, 2000 * i);
+      });
+    }
+
+  	if (parts[0] === '!categories') {
+  		message.reply(Links.generateCategories(parts[1]));
+  	}    
 
     if (parts[0] === "!help") {
       output = "The following commands are available: \n";
