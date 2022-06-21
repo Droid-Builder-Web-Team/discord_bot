@@ -1,6 +1,6 @@
 const rounds = {
-	wins: [],
-	losses: [],
+	wins: {},
+	losses: {},
 	teams: {
 		dark: [],
 		light: []
@@ -8,20 +8,25 @@ const rounds = {
 };
 
 module.exports = {
+	getScores: () => rounds,
 	fight: (playerOne, playerTwo) => {
 		const action = (data) => {
 			const legs = [
-				`${data.winner} counter steps ${data.loser}'s attack and stomps ${data.loser}'s ${data.side} :leg: in half.`,
-				`${data.winner} cuts through the air striking ${data.loser} in the ${data.side} :leg: ripping it off.`,
+				`${data.winner} counter steps ${data.loser}'s attack and stomps ${data.loser}'s ${data.side} :leg: leg in half.`,
+				`${data.winner} cuts through the air striking ${data.loser} in the ${data.side} :leg: leg ripping it off.`,
 				`${data.loser} attempts to flip over ${data.winner} but misses, and instead lands on his ${data.side} :leg: wrong causing it to rip in half.`,
-				`${data.loser} runs full speed at ${data.winner}, but forgets to stop and gets his ${data.side} :leg: cut off.`
+				`${data.loser} runs full speed at ${data.winner}, but forgets to stop and gets his ${data.side} :leg: leg cut off.`,
+				`${data.winner} force pushes ${data.loser} across the arena and breaks ${data.loser}'s ${data.side} :leg: leg in the process.`,
+				`${data.loser} attempts to force push ${data.winner}, but misses and snaps their own ${data.side} :leg: leg instead.`
 			];
 
 			const arms = [
-				`${data.winner} counter swings ${data.loser}'s attack and chops ${data.loser}'s :muscle: clean off.`,
-				`${data.winner} cuts through the air striking ${data.loser} in the ${data.side} :muscle: ripping it off.`,
-				`${data.loser} attempts to over power ${data.winner} but fails and lands on his ${data.side} :muscle: wrong causing it to fracture.`,
-				`${data.loser} runs full speed at ${data.winner}, but forgets to stop and gets his ${data.side} :muscle: cut off.`
+				`${data.winner} counter swings ${data.loser}'s attack and chops ${data.loser}'s :muscle: arm clean off.`,
+				`${data.winner} cuts through the air striking ${data.loser} in the ${data.side} :muscle: arm ripping it off.`,
+				`${data.loser} attempts to over power ${data.winner} but fails and lands on his ${data.side} :muscle: arm wrong causing it to fracture.`,
+				`${data.loser} runs full speed at ${data.winner}, but forgets to stop and gets his ${data.side} :muscle: arm cut off.`,
+				`${data.winner} blocks ${data.loser}'s attack by force pulling ${data.loser}'s ${data.side} :muscle: arm out of their socket.`,
+				`${data.loser} wields their weapon around ${data.winner} in an attempt to frighten ${data.winner}, but instead gets ${data.loser} gets their ${data.side} :muscle: arm broken.`,
 			];
 
 			const head = [
@@ -32,15 +37,15 @@ module.exports = {
 			];
 
 			if (data.part === 'leg') {
-				return legs[Math.floor(Math.random() * 3) + 1];
+				return legs[Math.floor(Math.random() * (legs.length - 1)) + 1];
 			}
 
 			if (data.part === 'arm') {
-				return arms[Math.floor(Math.random() * 3) + 1];
+				return arms[Math.floor(Math.random() * (arms.length - 1)) + 1];
 			}
 
 			if (data.part === 'head') {
-				return head[Math.floor(Math.random() * 3) + 1];
+				return head[Math.floor(Math.random() * (head.length - 1)) + 1];
 			}
 
 			return dual();						
@@ -66,8 +71,42 @@ module.exports = {
 			Math.floor(Math.random() * 10) + 1   // head
 		];
 
+		if (!rounds.wins[playerOne]) { rounds.wins[playerOne] = 0; }
+
+		if (!rounds.losses[playerOne]) { rounds.losses[playerOne] = 0; }
+
+		if (!rounds.wins[playerTwo]) { rounds.wins[playerTwo] = 0; }
+
+		if (!rounds.losses[playerTwo]) { rounds.losses[playerTwo] = 0; }
+
+		if (rounds.teams.dark.indexOf(playerOne) === -1 && rounds.teams.light.indexOf(playerOne) === -1) {
+			const lightOrDarkOne = Math.floor(Math.random() * 2);
+			if (lightOrDarkOne > 0) {
+				rounds.teams.light.push(playerOne);
+			} else {
+				rounds.teams.dark.push(playerOne);
+			}
+		}	
+
+		if (rounds.teams.dark.indexOf(playerTwo) === -1 && rounds.teams.light.indexOf(playerTwo) === -1) {
+			const lightOrDarkTwo = Math.floor(Math.random() * 2);
+			if (lightOrDarkTwo > 0) {
+				rounds.teams.light.push(playerTwo);
+			} else {
+				rounds.teams.dark.push(playerTwo);
+			}
+		}
+
+		if (playerOneRolls.reduce((partialSum, a) => partialSum + a, 0) > playerTwoRolls.reduce((partialSum, a) => partialSum + a, 0)) {
+			rounds.wins[playerOne]++;
+			rounds.losses[playerTwo]++;
+		} else {
+			rounds.wins[playerTwo]++;
+			rounds.losses[playerOne]++;
+		}
+
 		return [
-			`${playerOne} and ${playerTwo} both enter the arena, only one will leave.\n :lightsaber: FIGHT! :lightsaber:`,
+			`\n**${playerOne} and ${playerTwo} have enter the arena.** \n**FIGHT!**`,
 			playerOneRolls[0] !== playerTwoRolls[0] 
 				? `${playerOneRolls[0] > playerTwoRolls[0] 
 					? action({ winner: playerOne, loser: playerTwo, part: 'leg', side: 'left', roll: playerOneRolls[0] }) 
@@ -98,8 +137,8 @@ module.exports = {
 				: dual(),
 			`${
 				playerOneRolls.reduce((partialSum, a) => partialSum + a, 0) > playerTwoRolls.reduce((partialSum, a) => partialSum + a, 0) 
-					? `${playerOne} has won with ${playerOneRolls.reduce((partialSum, a) => partialSum + a, 0)} points :trophy: | ${playerTwo} has lost with ${playerTwoRolls.reduce((partialSum, a) => partialSum + a, 0)} points :head_bandage:` 
-					: `${playerTwo} has won with ${playerTwoRolls.reduce((partialSum, a) => partialSum + a, 0)} points :trophy: | ${playerOne} has lost with ${playerOneRolls.reduce((partialSum, a) => partialSum + a, 0)} points :head_bandage:`
+					? `\n\n${playerOne} has won with ${playerOneRolls.reduce((partialSum, a) => partialSum + a, 0)} points :trophy: | ${playerTwo} has lost with ${playerTwoRolls.reduce((partialSum, a) => partialSum + a, 0)} points :head_bandage:` 
+					: `\n\n${playerTwo} has won with ${playerTwoRolls.reduce((partialSum, a) => partialSum + a, 0)} points :trophy: | ${playerOne} has lost with ${playerOneRolls.reduce((partialSum, a) => partialSum + a, 0)} points :head_bandage:`
 			}` 					
 		];
 	}
