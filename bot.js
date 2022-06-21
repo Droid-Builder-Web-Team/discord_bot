@@ -131,14 +131,34 @@ client.on("message", async (message) => {
     }
 
     if (parts[0] === '!battle') {
-      const players = message.mentions.users.map(mention => mention.username);
-      if (players.length < 1) { return message.reply('Two players are required to start battle.'); }
-      const responses = Battle.fight(players[0], players[1]); 
-      Object.keys(responses).map(i => {
+      if (parts.indexOf('scores') !== -1) {
+        const scores = Battle.getScores();
+        if (!scores.wins[message.author.username] && !scores.losses[message.author.username]) {
+          message.reply('You have no found battle records. Please battle other users first.');
+        } else {
+          message.reply(`${message.author.username} ranks #${Object.keys(scores.wins).map((i) => (scores.wins[i] > scores.wins[message.author.username] ? scores.wins[i] : null)).filter(n => n).length + 1} on the battle leaderboards | ${scores.wins[message.author.username]} wins | ${scores.losses[message.author.username]} losses | Team ${(scores.teams.dark.indexOf(message.author.username) !== -1 ? 'Dark Side' : 'Light Side')}`);
+        }
+      } else if (parts.indexOf('switch') !== -1 || parts.indexOf('change') !== -1) {
+        const scores = Battle.getScores();
+        const isLight = scores.teams.light.indexOf(message.author.username) !== -1;
+
+        if (isLight) {
+          scores.teams.light[message.author.username] = null;
+          scores.teams.dark.push(message.author.username);
+        } else {
+          scores.teams.dark[message.author.username] = null;
+          scores.teams.light.push(message.author.username);
+        }
+
+        message.reply(`${message.author.username} has joined team "${(scores.teams.dark.indexOf(message.author.username) !== -1 ? 'Dark Side' : 'Light Side')}"`);
+      } else { 
+        const players = message.mentions.users.map(mention => mention.username);
+        if (players.length < 1) { return message.reply('Two players are required to start battle.'); }
+        const responses = Battle.fight(players[0], players[1]); 
         setTimeout(() => {
-          message.reply(responses[i]);
-        }, 2000 * i);
-      });
+          message.reply(Object.keys(responses).map(i => responses[i]).join('\n-----------\n'));
+        }, 1000);
+      }
     }
 
   	if (parts[0] === '!categories') {
