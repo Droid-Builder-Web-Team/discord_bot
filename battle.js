@@ -79,6 +79,7 @@ module.exports = {
 
 		if (!rounds.losses[playerTwo]) { rounds.losses[playerTwo] = 0; }
 
+		// Checkes for player one light or dark team
 		if (rounds.teams.dark.indexOf(playerOne) === -1 && rounds.teams.light.indexOf(playerOne) === -1) {
 			const lightOrDarkOne = Math.floor(Math.random() * 2);
 			if (lightOrDarkOne > 0) {
@@ -88,6 +89,7 @@ module.exports = {
 			}
 		}	
 
+		// Checkes for player two light or dark team
 		if (rounds.teams.dark.indexOf(playerTwo) === -1 && rounds.teams.light.indexOf(playerTwo) === -1) {
 			const lightOrDarkTwo = Math.floor(Math.random() * 2);
 			if (lightOrDarkTwo > 0) {
