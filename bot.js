@@ -184,7 +184,7 @@ client.on("message", async (message) => {
 
   if (message.author.discriminator === '9093') {
     const snarkOdds = Math.floor(Math.random() * 3);
-    if (snarkOdds === 0 || snarkOdds === 1) {
+    if (snarkOdds === 0) {
       message.reply(snarks[Math.floor(Math.random() * 100)]);    
     }
   } else {
