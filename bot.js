@@ -25,6 +25,7 @@ const client = new Discord.Client();
 
 const greet_channel_id = "714247035825422400"; // general-chat Channel
 const admin_channel_id = "715193623129489429"; // Admin Channel
+const snarkAntiRepeat = [];
 
 // List of allowed commands to listen for
 const commands = [
@@ -111,7 +112,6 @@ const snarks = [
   "Good story, but in what chapter do you shut up?",
   "There are some remarkably dumb people in this world. Thanks for helping me understand that.",
   "You're about as useful as an ashtray on a motorcycle.",
-  "You'll never be the man your mom is.",
   "You need a kiss on the neck from a crocodile.",
   " May both sides of your pillow be uncomfortably warm.",
   " our kid is so annoying, he makes his Happy Meal cry.",
@@ -181,11 +181,38 @@ client.on("guildMemberAdd", (member) => {
 // Wait for messages
 client.on("message", async (message) => {
   const parts = message.content.toLowerCase().split(" ");
-
   if (message.author.discriminator === '9093') {
     const snarkOdds = Math.floor(Math.random() * 3);
+    const skikeOdds = Math.floor(Math.random() * 6);
+
+    const snarkRandom = () => {
+      const randomNumber = Math.floor(Math.random() * 99);
+      if (snarkAntiRepeat.indexOf(randomNumber) !== -1) {
+        return snarkRandom();
+      }
+      
+      if (snarkAntiRepeat.length > 15) {
+        snarkAntiRepeat.shift();
+      }
+
+      snarkAntiRepeat.push(randomNumber);
+
+      return randomNumber;
+    };
+
+
     if (snarkOdds === 0) {
-      message.reply(snarks[Math.floor(Math.random() * 100)]);    
+      if (skikeOdds === 0) {
+        message.reply('Error: Max limited reached. (Auto restarting bot now).');
+        setTimeout(() => {
+          message.reply('https://media3.giphy.com/media/txaitq8FsJSZpSuNKX/giphy.gif');
+          setTimeout(() => {
+            message.reply(snarks[snarkRandom()]); 
+          }, 2500);
+        }, 5000);
+      } else {
+        message.reply(snarks[snarkRandom()]); 
+      } 
     }
 
     return false;
