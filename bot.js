@@ -187,184 +187,186 @@ client.on("message", async (message) => {
     if (snarkOdds === 0) {
       message.reply(snarks[Math.floor(Math.random() * 100)]);    
     }
-  } else {
-    if (commands.includes(parts[0])) {
-      // Check that the command is allowed.
-      // console.log('Command heard!');
 
-      if (parts[0] == "!role" && message.member != null) {
-        //Need to check the message has a member, otherwise crash!
-        Roles.grantRole(parts[1], message);
-      }
-
-      if (parts[0] === "!quote") {
-        message.reply(Quotes.generateQuote());
-      }
-
-      if (parts[0] === "!ping") {
-        message.reply("pong");
-      }
-
-      if (parts[0] === "!neverhaveiever") {
-        message.reply(Never.generateChallenge());
-      }
-
-      if (parts[0] === "!joke") {
-        message.reply(Joke.generateJoke());
-      }
-
-      if (parts[0] === "!links") {
-        message.reply(Links.generateLinks(parts[1]));
-      }
-
-    	if (parts[0] === '!robme') {
-    		message.reply(Conversation.robmeRandom());
-    	}
-
-      if (parts[0] === '!whereis' || parts[0] === '!whereisartoo' || parts[0] === '!canyoufind') {
-        message.reply(Conversation.whereIsArtoo());
-      }  
-
-      if (parts[0] === "!link-suggestion") {
-        if (!parts[1] || !parts[2] || !parts[3]) {
-          message.reply(
-            "To suggest a link be added, please use `!link-suggestion URL | CATEGORY | DESCRIPTION`"
-          );
-        } else {
-          Links.makeSuggestion(message);
-          message.reply(
-            "Thank you! I have captured this link and humans will review it shortly!"
-          );
-          // TODO - Send this suggestion to admin/ moderator chat
-        }
-      }
-
-      if (parts[0] === '!battle') {
-        if (parts.indexOf('scores') !== -1) {
-          const scores = Battle.getScores();
-          if (!scores.wins[message.author.username] && !scores.losses[message.author.username]) {
-            message.reply('You have no found battle records. Please battle other users first.');
-          } else {
-            message.reply(`${message.author.username} ranks #${Object.keys(scores.wins).map((i) => (scores.wins[i] > scores.wins[message.author.username] ? scores.wins[i] : null)).filter(n => n).length + 1} on the battle leaderboards | ${scores.wins[message.author.username]} wins | ${scores.losses[message.author.username]} losses | Team ${(scores.teams.dark.indexOf(message.author.username) !== -1 ? 'Dark Side' : 'Light Side')}`);
-          }
-        } else if (parts.indexOf('switch') !== -1 || parts.indexOf('change') !== -1) {
-          const scores = Battle.getScores();
-          const isLight = scores.teams.light.indexOf(message.author.username) !== -1;
-
-          if (isLight) {
-            scores.teams.light[message.author.username] = null;
-            scores.teams.dark.push(message.author.username);
-          } else {
-            scores.teams.dark[message.author.username] = null;
-            scores.teams.light.push(message.author.username);
-          }
-
-          message.reply(`${message.author.username} has joined team "${(scores.teams.dark.indexOf(message.author.username) !== -1 ? 'Dark Side' : 'Light Side')}"`);
-        } else { 
-          const players = message.mentions.users.map(mention => mention.username);
-          if (players.length < 1) { return message.reply('Two players are required to start battle.'); }
-          const responses = Battle.fight(players[0], players[1]); 
-          setTimeout(() => {
-            message.reply(Object.keys(responses).map(i => responses[i]).join('\n-----------\n'));
-          }, 1000);
-        }
-      }
-
-    	if (parts[0] === '!categories') {
-    		message.reply(Links.generateCategories(parts[1]));
-    	}    
-
-      if (parts[0] === "!help") {
-        output = "The following commands are available: \n";
-
-        for (i = 0; i < commands.length; i++) {
-          output += "\t" + commands[i] + "\n";
-        }
-
-        message.reply(output);
-      }
-
-      // console.log('Command processed.');
-    }
-
-    let conversationCallSignCheck = message.content
-      .toLowerCase()
-      .replace(/\./g, "")
-      .replace(/\?/g, "")
-      .replace(/!/g, "")
-      .replace(/,/g, "");
-    if (conversationCallSignCheck.indexOf("artoo") !== -1) {
-      if (
-        conversationCallSignCheck.indexOf("artoo") === 0 ||
-        conversationCallSignCheck.indexOf("artoo") ===
-          conversationCallSignCheck.length - 5
-      ) {
-        // General conversational parsing
-        const hasConversableResponse = Conversation.identify(
-          message.content,
-          client
-        );
-        if (hasConversableResponse) {
-          message.channel.startTyping();
-          setTimeout(() => {
-            message.reply(hasConversableResponse);
-            message.channel.stopTyping();
-          }, hasConversableResponse.length * 10);
-        }
-
-        // General mathmatics parsing
-        const hasMathSolution = Maths.formulate(message.content);
-        if (hasMathSolution) {
-          message.channel.startTyping();
-          setTimeout(() => {
-            message.reply(hasMathSolution);
-            message.channel.stopTyping();
-          }, hasMathSolution.length * 10);
-        }
-
-        // For when asking for random gif OR has no clue what we are asking
-        if (
-          !commands.includes(parts[0]) &&
-          !hasConversableResponse &&
-          !hasMathSolution
-        ) {
-          giphyRandom("RiiuLenSRb1z6TD5hVHecQ0NYYeqYAoX", { tag: "droids" }).then(
-            (response) => {
-              if (
-                message.content.toLowerCase().indexOf("gif") !== -1 ||
-                message.content.toLowerCase().indexOf("giphy") !== -1
-              ) {
-                message.reply("One random gif coming right up!");
-              } else {
-                const unknownResponses = [
-                  `So, I\'ve probably not been programmed to understand what you\'ve just said...ask Rob?`,
-                  `What? Darn, where is a translator droid when you need one...`,
-                  `Uhhh.. I\'m not sure what you are asking for.. so here is a random gif instead ${response.data.images.original.url}`,
-                  "I would.. if I had any idea what you are saying...",
-                  "Huh? I'm so confused right now",
-                  "I have no idea what you are asking of me.",
-                  "Nope, wrong command.. Keep trying though!",
-                  "<Unknown Command>. I'm sure you will get it soon!",
-                  "You talking to me?",
-                  "No....? Wait, YES!?\n\r HELP I NEED AN ADULT!",
-                  "Least buy me a drink first...",
-                  "Typical hooman.. know not what they ask for...",
-                  "Confusion he is.. Understanding he is not..",
-                  "Uhhh.. Yes?! wait.. NO!.. ok I have no idea what you are asking to be honest..",
-                  "Sure.. Reciting the entire English Dictionary starting from *A*!\n\r Just kidding.. I have no idea what you are asking.",
-                ];
-                message.reply(
-                  unknownResponses[
-                    Math.floor(Math.random() * unknownResponses.length)
-                  ]
-                );
-              }
-            }
-          );
-        }
-      }
-    }
+    return false;
   }
+
+  if (commands.includes(parts[0])) {
+    // Check that the command is allowed.
+    // console.log('Command heard!');
+
+    if (parts[0] == "!role" && message.member != null) {
+      //Need to check the message has a member, otherwise crash!
+      Roles.grantRole(parts[1], message);
+    }
+
+    if (parts[0] === "!quote") {
+      message.reply(Quotes.generateQuote());
+    }
+
+    if (parts[0] === "!ping") {
+      message.reply("pong");
+    }
+
+    if (parts[0] === "!neverhaveiever") {
+      message.reply(Never.generateChallenge());
+    }
+
+    if (parts[0] === "!joke") {
+      message.reply(Joke.generateJoke());
+    }
+
+    if (parts[0] === "!links") {
+      message.reply(Links.generateLinks(parts[1]));
+    }
+
+    if (parts[0] === '!robme') {
+      message.reply(Conversation.robmeRandom());
+    }
+
+    if (parts[0] === '!whereis' || parts[0] === '!whereisartoo' || parts[0] === '!canyoufind') {
+      message.reply(Conversation.whereIsArtoo());
+    }  
+
+    if (parts[0] === "!link-suggestion") {
+      if (!parts[1] || !parts[2] || !parts[3]) {
+        message.reply(
+          "To suggest a link be added, please use `!link-suggestion URL | CATEGORY | DESCRIPTION`"
+        );
+      } else {
+        Links.makeSuggestion(message);
+        message.reply(
+          "Thank you! I have captured this link and humans will review it shortly!"
+        );
+        // TODO - Send this suggestion to admin/ moderator chat
+      }
+    }
+
+    if (parts[0] === '!battle') {
+      if (parts.indexOf('scores') !== -1) {
+        const scores = Battle.getScores();
+        if (!scores.wins[message.author.username] && !scores.losses[message.author.username]) {
+          message.reply('You have no found battle records. Please battle other users first.');
+        } else {
+          message.reply(`${message.author.username} ranks #${Object.keys(scores.wins).map((i) => (scores.wins[i] > scores.wins[message.author.username] ? scores.wins[i] : null)).filter(n => n).length + 1} on the battle leaderboards | ${scores.wins[message.author.username]} wins | ${scores.losses[message.author.username]} losses | Team ${(scores.teams.dark.indexOf(message.author.username) !== -1 ? 'Dark Side' : 'Light Side')}`);
+        }
+      } else if (parts.indexOf('switch') !== -1 || parts.indexOf('change') !== -1) {
+        const scores = Battle.getScores();
+        const isLight = scores.teams.light.indexOf(message.author.username) !== -1;
+
+        if (isLight) {
+          scores.teams.light[message.author.username] = null;
+          scores.teams.dark.push(message.author.username);
+        } else {
+          scores.teams.dark[message.author.username] = null;
+          scores.teams.light.push(message.author.username);
+        }
+
+        message.reply(`${message.author.username} has joined team "${(scores.teams.dark.indexOf(message.author.username) !== -1 ? 'Dark Side' : 'Light Side')}"`);
+      } else { 
+        const players = message.mentions.users.map(mention => mention.username);
+        if (players.length < 1) { return message.reply('Two players are required to start battle.'); }
+        const responses = Battle.fight(players[0], players[1]); 
+        setTimeout(() => {
+          message.reply(Object.keys(responses).map(i => responses[i]).join('\n-----------\n'));
+        }, 1000);
+      }
+    }
+
+    if (parts[0] === '!categories') {
+      message.reply(Links.generateCategories(parts[1]));
+    }    
+
+    if (parts[0] === "!help") {
+      output = "The following commands are available: \n";
+
+      for (i = 0; i < commands.length; i++) {
+        output += "\t" + commands[i] + "\n";
+      }
+
+      message.reply(output);
+    }
+
+    // console.log('Command processed.');
+  }
+
+  let conversationCallSignCheck = message.content
+    .toLowerCase()
+    .replace(/\./g, "")
+    .replace(/\?/g, "")
+    .replace(/!/g, "")
+    .replace(/,/g, "");
+  if (conversationCallSignCheck.indexOf("artoo") !== -1) {
+    if (
+      conversationCallSignCheck.indexOf("artoo") === 0 ||
+      conversationCallSignCheck.indexOf("artoo") ===
+        conversationCallSignCheck.length - 5
+    ) {
+      // General conversational parsing
+      const hasConversableResponse = Conversation.identify(
+        message.content,
+        client
+      );
+      if (hasConversableResponse) {
+        message.channel.startTyping();
+        setTimeout(() => {
+          message.reply(hasConversableResponse);
+          message.channel.stopTyping();
+        }, hasConversableResponse.length * 10);
+      }
+
+      // General mathmatics parsing
+      const hasMathSolution = Maths.formulate(message.content);
+      if (hasMathSolution) {
+        message.channel.startTyping();
+        setTimeout(() => {
+          message.reply(hasMathSolution);
+          message.channel.stopTyping();
+        }, hasMathSolution.length * 10);
+      }
+
+      // For when asking for random gif OR has no clue what we are asking
+      if (
+        !commands.includes(parts[0]) &&
+        !hasConversableResponse &&
+        !hasMathSolution
+      ) {
+        giphyRandom("RiiuLenSRb1z6TD5hVHecQ0NYYeqYAoX", { tag: "droids" }).then(
+          (response) => {
+            if (
+              message.content.toLowerCase().indexOf("gif") !== -1 ||
+              message.content.toLowerCase().indexOf("giphy") !== -1
+            ) {
+              message.reply("One random gif coming right up!");
+            } else {
+              const unknownResponses = [
+                `So, I\'ve probably not been programmed to understand what you\'ve just said...ask Rob?`,
+                `What? Darn, where is a translator droid when you need one...`,
+                `Uhhh.. I\'m not sure what you are asking for.. so here is a random gif instead ${response.data.images.original.url}`,
+                "I would.. if I had any idea what you are saying...",
+                "Huh? I'm so confused right now",
+                "I have no idea what you are asking of me.",
+                "Nope, wrong command.. Keep trying though!",
+                "<Unknown Command>. I'm sure you will get it soon!",
+                "You talking to me?",
+                "No....? Wait, YES!?\n\r HELP I NEED AN ADULT!",
+                "Least buy me a drink first...",
+                "Typical hooman.. know not what they ask for...",
+                "Confusion he is.. Understanding he is not..",
+                "Uhhh.. Yes?! wait.. NO!.. ok I have no idea what you are asking to be honest..",
+                "Sure.. Reciting the entire English Dictionary starting from *A*!\n\r Just kidding.. I have no idea what you are asking.",
+              ];
+              message.reply(
+                unknownResponses[
+                  Math.floor(Math.random() * unknownResponses.length)
+                ]
+              );
+            }
+          }
+        );
+      }
+    }
+  }  
 });
 
 client.on("warn", function (info) {
