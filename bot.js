@@ -203,7 +203,7 @@ client.on("message", async (message) => {
 
     if (snarkOdds === 0) {
       if (skikeOdds === 0) {
-        message.reply('Error: Max limited reached. (Auto restarting bot now).');
+        message.reply('Error: Max limit reached. (Auto restarting bot now).');
         setTimeout(() => {
           message.reply('https://media3.giphy.com/media/txaitq8FsJSZpSuNKX/giphy.gif');
           setTimeout(() => {
