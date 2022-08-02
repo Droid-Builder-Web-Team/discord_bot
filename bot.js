@@ -181,6 +181,8 @@ client.on("guildMemberAdd", (member) => {
 // Wait for messages
 client.on("message", async (message) => {
   const parts = message.content.toLowerCase().split(" ");
+
+/*
   if (message.author.discriminator === '9093') {
     const snarkOdds = Math.floor(Math.random() * 3);
     const skikeOdds = Math.floor(Math.random() * 6);
@@ -217,6 +219,7 @@ client.on("message", async (message) => {
 
     return false;
   }
+  */
 
   if (commands.includes(parts[0])) {
     // Check that the command is allowed.
