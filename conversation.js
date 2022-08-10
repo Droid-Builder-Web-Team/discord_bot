@@ -1,3 +1,18 @@
+const path = require('path');
+
+const WhereIsArtooImages = [
+	path.resolve(__dirname, './assets/images/wheresr2-one.jpg'),
+	path.resolve(__dirname, './assets/images/wheresr2-two.jpg'),
+	path.resolve(__dirname, './assets/images/wheresr2-three.jpg'),
+	path.resolve(__dirname, './assets/images/wheresr2-four.jpg'),
+	path.resolve(__dirname, './assets/images/wheresr2-five.jpg'),
+	path.resolve(__dirname, './assets/images/wheresr2-six.jpg'),
+	path.resolve(__dirname, './assets/images/wheresr2-seven.jpg'),
+	path.resolve(__dirname, './assets/images/wheresr2-eight.jpg'),
+	path.resolve(__dirname, './assets/images/wheresr2-nine.jpg'),
+	path.resolve(__dirname, './assets/images/wheresr2-ten.jpg')
+];
+
 module.exports = {
 	identify: (message, client) => {
 		// Greetings
@@ -572,15 +587,7 @@ module.exports = {
 		return `You have been ${randomRobKey} rob-ed\n\r ![${randomRobKey} rob](${randomRobs[randomRobKey]})`;
 	},
 	whereIsArtoo: () => {
-		const randomHunts = [
-			'https://ibin.co/6l5IhuJYY5ab.jpg',
-			'https://ibin.co/6l5IQjePvMiP.jpg',
-			'https://ibin.co/6l5IXI9uGysz.jpg',
-			'https://ibin.co/6l5IHMvQrD0L.jpg',
-			'https://ibin.co/6l5IB7m6oQ6r.jpg'
-		];
-
-		const randomHuntKey = Object.keys(randomHunts)[Math.floor((Math.random() * 4 | 0) + 1)];
-		return `Can you find me?\n\r ${randomHunts[randomHuntKey]}`;
+		const randomHuntKey = Object.keys(WhereIsArtooImages)[Math.floor((Math.random() * 9 | 0) + 1)];
+		return `Can you find me?\n\r ${WhereIsArtooImages[randomHuntKey]}`;
 	}
 };
