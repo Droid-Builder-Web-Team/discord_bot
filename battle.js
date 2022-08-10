@@ -26,13 +26,13 @@ module.exports = {
 				`${data.loser} attempts to over power ${data.winner} but fails and lands on his ${data.side} :muscle: arm wrong causing it to fracture.`,
 				`${data.loser} runs full speed at ${data.winner}, but forgets to stop and gets his ${data.side} :muscle: arm cut off.`,
 				`${data.winner} blocks ${data.loser}'s attack by force pulling ${data.loser}'s ${data.side} :muscle: arm out of their socket.`,
-				`${data.loser} wields their weapon around ${data.winner} in an attempt to frighten ${data.winner}, but instead gets ${data.loser} gets their ${data.side} :muscle: arm broken.`,
+				`${data.loser} wields their weapon around ${data.winner} in an attempt to frighten ${data.winner}, but instead ${data.loser} gets their ${data.side} :muscle: arm broken.`,
 			];
 
 			const head = [
 				`With their remaining strength, ${data.winner} swings and removes ${data.loser}'s head clean off :dizzy_face:.`,
 				`With all their will, ${data.winner} lands their weapon directly on ${data.loser}'s head removing it with a splater :drop_of_blood:.`,
-				`${data.winner} proceeds to head butt ${data.loser} until ${data.loser}'s front skill caved in :skull:.`,
+				`${data.winner} proceeds to head butt ${data.loser} until ${data.loser}'s front skull caved in :skull:.`,
 				`${data.winner} took a strong swing at ${data.loser}'s head cutting it clean off at the jaw :skull_crossbones:.`
 			];
 
