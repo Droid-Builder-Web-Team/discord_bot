@@ -1,16 +1,16 @@
 const path = require('path');
 
 const WhereIsArtooImages = [
-	path.resolve(__dirname, './assets/images/wheresr2-one.jpg'),
-	path.resolve(__dirname, './assets/images/wheresr2-two.jpg'),
-	path.resolve(__dirname, './assets/images/wheresr2-three.jpg'),
-	path.resolve(__dirname, './assets/images/wheresr2-four.jpg'),
-	path.resolve(__dirname, './assets/images/wheresr2-five.jpg'),
-	path.resolve(__dirname, './assets/images/wheresr2-six.jpg'),
-	path.resolve(__dirname, './assets/images/wheresr2-seven.jpg'),
-	path.resolve(__dirname, './assets/images/wheresr2-eight.jpg'),
-	path.resolve(__dirname, './assets/images/wheresr2-nine.jpg'),
-	path.resolve(__dirname, './assets/images/wheresr2-ten.jpg')
+	'https://droidbuilders.uk/wp-content/uploads/2022/09/wheresr2-one-1024x674.jpg',
+	'https://droidbuilders.uk/wp-content/uploads/2022/09/wheresr2-two-1024x576.jpg',
+	'https://droidbuilders.uk/wp-content/uploads/2022/09/wheresr2-three-1024x890.jpg',
+	'https://droidbuilders.uk/wp-content/uploads/2022/09/wheresr2-four-1024x663.jpg',
+	'https://droidbuilders.uk/wp-content/uploads/2022/09/wheresr2-five-1024x662.jpg',
+	'https://droidbuilders.uk/wp-content/uploads/2022/09/wheresr2-six-1024x724.jpg',
+	'https://droidbuilders.uk/wp-content/uploads/2022/09/wheresr2-seven-1024x480.jpg',
+	'https://droidbuilders.uk/wp-content/uploads/2022/09/wheresr2-eight-1024x753.jpg',
+	'https://droidbuilders.uk/wp-content/uploads/2022/09/wheresr2-nine-1024x691.jpg',
+	'https://droidbuilders.uk/wp-content/uploads/2022/09/wheresr2-ten-1024x788.jpg'
 ];
 
 module.exports = {
